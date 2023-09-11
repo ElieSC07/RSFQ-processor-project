@@ -1,0 +1,320 @@
+
+.model instrDec_PClogic_take6
+
+.inputs bit7 bit6 bit5 bit4 bit3 bit2 bit1 overflow zero neg
+.outputs Imm0 read Op_Arith Imm1 Op_And Imm2 Op_Xor Imm3 Cmpl_b0 Cin Cmpl_b1 nextInstrAddr0_1 nextInstrAddr0_0 nextInstrAddr1_0 readNextInstr0 nextInstrAddr1_1 readNextInstr1 write_flags select0 select1 Addr1 Addr0
+
+.gate LSmitll_SPLITT a=bit7 O=N004_N014
+.gate LSmitll_SPLITT a=bit6 O=N026_N032
+.gate LSmitll_DFFT a=N004_N014 O=N015
+.gate LSmitll_NOTT a=N004_N014 O=N005
+.gate LSmitll_DFFT a=N026_N032 O=N033
+.gate LSmitll_NOTT a=N026_N032 O=N027
+.gate LSmitll_DFFT a=bit5 O=N098
+.gate LSmitll_DFFT a=bit4 O=N130
+.gate LSmitll_DFFT a=bit3 O=N146
+.gate LSmitll_DFFT a=bit2 O=N162
+.gate LSmitll_DFFT a=bit1 O=N179
+.gate LSmitll_SPLITT a=overflow O=V_0_N210
+.gate LSmitll_SPLITT a=zero O=N217_N226
+.gate LSmitll_SPLITT a=neg O=N_0_N253
+.gate LSmitll_DFFT a=V_0_N210 O=V_1
+.gate LSmitll_DFFT a=N217_N226 O=Z
+.gate LSmitll_NOTT a=N217_N226 O=not_Z
+.gate LSmitll_DFFT a=N_0_N253 O=N_1
+.gate LSmitll_XORT a=V_0_N210 b=N_0_N253 O=N236
+.gate LSmitll_SPLITT a=N005 O=N003_N006
+.gate LSmitll_SPLITT a=N015 O=N012_N016
+.gate LSmitll_SPLITT a=N027 O=N008_N028
+.gate LSmitll_SPLITT a=N033 O=N018_N035
+.gate LSmitll_AND2T a=N003_N006 b=N008_N028 O=N001
+.gate LSmitll_AND2T a=N003_N006 b=N018_N035 O=N013
+.gate LSmitll_AND2T a=N012_N016 b=N008_N028 O=N024
+.gate LSmitll_AND2T a=N012_N016 b=N018_N035 O=N034
+.gate LSmitll_DFFT a=N098 O=N099
+.gate LSmitll_DFFT a=N130 O=N131
+.gate LSmitll_DFFT a=N146 O=N147
+.gate LSmitll_DFFT a=N162 O=N163
+.gate LSmitll_DFFT a=N179 O=N180
+.gate LSmitll_DFFT a=Z O=N208
+.gate LSmitll_DFFT a=not_Z O=N243
+.gate LSmitll_XORT a=V_1 b=N_1 O=N215
+.gate LSmitll_NOTT a=N236 O=N237
+.gate LSmitll_SPLITT a=N208 O=N207_N209
+.gate LSmitll_SPLITT a=N237 O=N232_N239
+.gate LSmitll_SPLITT a=N215 O=N212_N216
+.gate LSmitll_SPLITT a=N034 O=N038_N043
+.gate LSmitll_SPLITT a=N038_N043 O=N036_N039
+.gate LSmitll_SPLITT a=N038_N043 O=N041_N045
+.gate LSmitll_SPLITT a=N013 O=N009_N019
+.gate LSmitll_SPLITT a=N024 O=N022_N030
+.gate LSmitll_SPLITT a=N099 O=N097_N101
+.gate LSmitll_SPLITT a=N097_N101 O=N078_N100
+.gate LSmitll_SPLITT a=N097_N101 O=N108_N125
+.gate LSmitll_SPLITT a=N131 O=N128_N134
+.gate LSmitll_SPLITT a=N128_N134 O=N126_N132
+.gate LSmitll_SPLITT a=N128_N134 O=N140_N141
+.gate LSmitll_SPLITT a=N147 O=N144_N150
+.gate LSmitll_SPLITT a=N163 O=N160_N166
+.gate LSmitll_SPLITT a=N144_N150 O=N142_N148
+.gate LSmitll_SPLITT a=N160_N166 O=N158_N164
+.gate LSmitll_SPLITT a=N144_N150 O=N156_N157
+.gate LSmitll_SPLITT a=N160_N166 O=N172_N173
+.gate LSmitll_SPLITT a=N180 O=N177_N185
+.gate LSmitll_SPLITT a=N177_N185 O=N174_N181
+.gate LSmitll_SPLITT a=N177_N185 O=N192_N194
+.gate LSmitll_DFFT a=N036_N039 O=N037
+.gate LSmitll_DFFT a=N036_N039 O=N040
+.gate LSmitll_DFFT a=N041_N045 O=N042
+.gate LSmitll_DFFT a=N041_N045 O=N046
+.gate LSmitll_DFFT a=N009_N019 O=N010
+.gate LSmitll_DFFT a=N009_N019 O=N020
+.gate LSmitll_DFFT a=N022_N030 O=N023
+.gate LSmitll_DFFT a=N022_N030 O=N031
+.gate LSmitll_DFFT a=N001 O=N002
+.gate LSmitll_NOTT a=N078_N100 O=N079
+.gate LSmitll_DFFT a=N078_N100 O=N103
+.gate LSmitll_DFFT a=N108_N125 O=bit5_1
+.gate LSmitll_DFFT a=N108_N125 O=bit5_2
+.gate LSmitll_DFFT a=N126_N132 O=N127
+.gate LSmitll_DFFT a=N126_N132 O=N135
+.gate LSmitll_DFFT a=N140_N141 O=bit4_1
+.gate LSmitll_DFFT a=N140_N141 O=bit4_2
+.gate LSmitll_DFFT a=N142_N148 O=N143
+.gate LSmitll_DFFT a=N142_N148 O=N151
+.gate LSmitll_DFFT a=N156_N157 O=bit3_1
+.gate LSmitll_NOTT a=N156_N157 O=bit3_1_not
+.gate LSmitll_DFFT a=N158_N164 O=N159
+.gate LSmitll_DFFT a=N158_N164 O=N167
+.gate LSmitll_DFFT a=N172_N173 O=bit2_1
+.gate LSmitll_NOTT a=N172_N173 O=bit2_1_not
+.gate LSmitll_DFFT a=N174_N181 O=N175
+.gate LSmitll_DFFT a=N174_N181 O=N187
+.gate LSmitll_DFFT a=N192_N194 O=bit1_1
+.gate LSmitll_NOTT a=N192_N194 O=bit1_1_not
+.gate LSmitll_DFFT a=N207_N209 O=EQ
+.gate LSmitll_AND2T a=N232_N239 b=N243 O=GT
+.gate LSmitll_DFFT a=N212_N216 O=LT
+.gate LSmitll_DFFT a=N232_N239 O=GE
+.gate LSmitll_OR2T a=N207_N209 b=N212_N216 O=LE
+.gate LSmitll_SPLITT a=N023 O=N021_N025
+.gate LSmitll_SPLITT a=N021_N025 O=Data_hndl_OP0_Data_hndl_OP1
+.gate LSmitll_SPLITT a=N021_N025 O=Data_hndl_OP2_Data_hndl_OP3
+.gate LSmitll_SPLITT a=N031 O=N029_Data_hndl_OP6
+.gate LSmitll_SPLITT a=N029_Data_hndl_OP6 O=Data_hndl_OP4_Data_hndl_OP5
+.gate LSmitll_SPLITT a=N010 O=N007_N011
+.gate LSmitll_SPLITT a=N007_N011 O=CMP_OP0_CMP_OP1
+.gate LSmitll_SPLITT a=N007_N011 O=CMP_OP2_CMP_OP3
+.gate LSmitll_SPLITT a=N020 O=N017_CMP_OP6
+.gate LSmitll_SPLITT a=N017_CMP_OP6 O=CMP_OP4_CMP_OP5
+.gate LSmitll_SPLITT a=N037 O=ALU_OP0_ALU_OP1
+.gate LSmitll_SPLITT a=N040 O=ALU_OP2_ALU_OP3
+.gate LSmitll_SPLITT a=N042 O=ALU_OP4_ALU_OP5
+.gate LSmitll_SPLITT a=N046 O=N044_ALU_OP8
+.gate LSmitll_SPLITT a=N044_ALU_OP8 O=ALU_OP6_ALU_OP7
+.gate LSmitll_SPLITT a=N079 O=N074_N096
+.gate LSmitll_SPLITT a=N103 O=N102_N107
+.gate LSmitll_SPLITT a=N135 O=N129_N138
+.gate LSmitll_SPLITT a=N151 O=N145_N154
+.gate LSmitll_SPLITT a=N167 O=N161_N170
+.gate LSmitll_SPLITT a=N187 O=N178_N189
+.gate LSmitll_DFFT a=N002 O=Branch_OP
+.gate LSmitll_DFFT a=CMP_OP0_CMP_OP1 O=N047
+.gate LSmitll_OR2T a=CMP_OP0_CMP_OP1 b=ALU_OP0_ALU_OP1 O=read
+.gate LSmitll_DFFT a=ALU_OP0_ALU_OP1 O=N061
+.gate LSmitll_AND2T a=N074_N096 b=Data_hndl_OP0_Data_hndl_OP1 O=N075
+.gate LSmitll_AND2T a=ALU_OP2_ALU_OP3 b=N074_N096 O=N080
+.gate LSmitll_AND2T a=N102_N107 b=Data_hndl_OP0_Data_hndl_OP1 O=N104
+.gate LSmitll_AND2T a=ALU_OP2_ALU_OP3 b=N102_N107 O=N109
+.gate LSmitll_AND2T a=N129_N138 b=ALU_OP4_ALU_OP5 O=N133
+.gate LSmitll_AND2T a=CMP_OP2_CMP_OP3 b=N129_N138 O=N139
+.gate LSmitll_AND2T a=Data_hndl_OP2_Data_hndl_OP3 b=N127 O=Imm0
+.gate LSmitll_AND2T a=N145_N154 b=ALU_OP4_ALU_OP5 O=N149
+.gate LSmitll_AND2T a=CMP_OP2_CMP_OP3 b=N145_N154 O=N155
+.gate LSmitll_AND2T a=Data_hndl_OP2_Data_hndl_OP3 b=N143 O=Imm1
+.gate LSmitll_AND2T a=N161_N170 b=ALU_OP6_ALU_OP7 O=N165
+.gate LSmitll_AND2T a=CMP_OP4_CMP_OP5 b=N161_N170 O=N171
+.gate LSmitll_AND2T a=Data_hndl_OP4_Data_hndl_OP5 b=N159 O=Imm2
+.gate LSmitll_AND2T a=N178_N189 b=ALU_OP6_ALU_OP7 O=N182
+.gate LSmitll_AND2T a=CMP_OP4_CMP_OP5 b=N178_N189 O=N190
+.gate LSmitll_AND2T a=Data_hndl_OP4_Data_hndl_OP5 b=N175 O=Imm3
+.gate LSmitll_OR2T a=bit5_1 b=bit4_1 O=N197
+.gate LSmitll_DFFT a=bit3_1 O=BAL
+.gate LSmitll_AND2T a=bit3_1_not b=EQ O=BEQ
+.gate LSmitll_AND2T a=bit2_1 b=GT O=BGT
+.gate LSmitll_AND2T a=bit2_1_not b=LT O=BLT
+.gate LSmitll_AND2T a=bit1_1 b=GE O=BGE
+.gate LSmitll_AND2T a=bit1_1_not b=LE O=BLE
+.gate LSmitll_DFFT a=bit5_2 O=N256
+.gate LSmitll_DFFT a=bit4_2 O=N266
+.gate LSmitll_DFFT a=N044_ALU_OP8 O=N276
+.gate LSmitll_DFFT a=N017_CMP_OP6 O=N280
+.gate LSmitll_DFFT a=N047 O=N048
+.gate LSmitll_DFFT a=N061 O=N062
+.gate LSmitll_DFFT a=N080 O=N081
+.gate LSmitll_DFFT a=N075 O=N076
+.gate LSmitll_DFFT a=N109 O=N110
+.gate LSmitll_DFFT a=N104 O=N105
+.gate LSmitll_OR2T a=N133 b=N139 O=N136
+.gate LSmitll_OR2T a=N149 b=N155 O=N152
+.gate LSmitll_OR2T a=N165 b=N171 O=N168
+.gate LSmitll_OR2T a=N182 b=N190 O=N188
+.gate LSmitll_AND2T a=N197 b=Branch_OP O=N201
+.gate LSmitll_OR2T a=BAL b=BEQ O=N213
+.gate LSmitll_OR2T a=BGT b=BLT O=N222
+.gate LSmitll_OR2T a=BGE b=BLE O=N228
+.gate LSmitll_DFFT a=N256 O=N257
+.gate LSmitll_DFFT a=N266 O=N267
+.gate LSmitll_DFFT a=N280 O=N281
+.gate LSmitll_SPLITT a=N188 O=N183_N191
+.gate LSmitll_DFFT a=N048 O=N049
+.gate LSmitll_DFFT a=N062 O=N063
+.gate LSmitll_DFFT a=N081 O=N082
+.gate LSmitll_DFFT a=N076 O=N077
+.gate LSmitll_DFFT a=N110 O=N111
+.gate LSmitll_DFFT a=N105 O=N106
+.gate LSmitll_DFFT a=N136 O=N137
+.gate LSmitll_DFFT a=N152 O=N153
+.gate LSmitll_DFFT a=N168 O=N169
+.gate LSmitll_DFFT a=N183_N191 O=N184
+.gate LSmitll_DFFT a=N183_N191 O=N193
+.gate LSmitll_DFFT a=N201 O=N202
+.gate LSmitll_OR2T a=N222 b=N228 O=N218
+.gate LSmitll_DFFT a=N213 O=N214
+.gate LSmitll_DFFT a=N257 O=N258
+.gate LSmitll_DFFT a=N267 O=N268
+.gate LSmitll_SPLITT a=N184 O=N176_N186
+.gate LSmitll_DFFT a=N049 O=N050
+.gate LSmitll_DFFT a=N063 O=N064
+.gate LSmitll_DFFT a=N082 O=N083
+.gate LSmitll_DFFT a=N111 O=N112
+.gate LSmitll_DFFT a=N137 O=Op_Arith
+.gate LSmitll_DFFT a=N153 O=Op_And
+.gate LSmitll_DFFT a=N169 O=Op_Xor
+.gate LSmitll_DFFT a=N176_N186 O=Cmpl_b0
+.gate LSmitll_DFFT a=N176_N186 O=Cmpl_b1
+.gate LSmitll_DFFT a=N193 O=Cin
+.gate LSmitll_DFFT a=N202 O=not_NoOp
+.gate LSmitll_OR2T a=N214 b=N218 O=P001
+.gate LSmitll_DFFT a=N258 O=N259
+.gate LSmitll_DFFT a=N268 O=N269
+.gate LSmitll_SPLITT a=P001 O=N211_N219
+.gate LSmitll_SPLITT a=not_NoOp O=N200_N204
+.gate LSmitll_DFFT a=N050 O=N051
+.gate LSmitll_DFFT a=N064 O=N065
+.gate LSmitll_DFFT a=N083 O=N084
+.gate LSmitll_DFFT a=N112 O=N113
+.gate LSmitll_DFFT a=N200_N204 O=P002
+.gate LSmitll_AND2T a=N200_N204 b=N211_N219 O=P003
+.gate LSmitll_NOTT a=N211_N219 O=N220
+.gate LSmitll_DFFT a=N259 O=N260
+.gate LSmitll_DFFT a=N269 O=N270
+.gate LSmitll_DFFT a=N281 O=N282
+.gate LSmitll_SPLITT a=P003 O=branching_and_cond_met_0_branching_and_cond_met_1
+.gate LSmitll_SPLITT a=P002 O=N198_N203
+.gate LSmitll_SPLITT a=branching_and_cond_met_0_branching_and_cond_met_1 O=N261_N263
+.gate LSmitll_DFFT a=N051 O=N052
+.gate LSmitll_DFFT a=N065 O=N066
+.gate LSmitll_DFFT a=N084 O=N085
+.gate LSmitll_DFFT a=N113 O=N114
+.gate LSmitll_AND2T a=N198_N203 b=N220 O=branching_and_cond_not_met
+.gate LSmitll_DFFT a=branching_and_cond_met_0_branching_and_cond_met_1 O=N195
+.gate LSmitll_OR2T a=not_current_instr_Addrr1_0_not_current_instr_Addrr1_1 b=not_current_instr_Addrr0_0_not_current_instr_Addrr0_1 O=N206
+.gate LSmitll_DFFT a=N198_N203 O=N199
+.gate LSmitll_AND2T a=N260 b=N261_N263 O=branch_offset0
+.gate LSmitll_AND2T a=N261_N263 b=N270 O=N265
+.gate LSmitll_DFFT a=N276 O=N277
+.gate LSmitll_DFFT a=N282 O=N283
+.gate LSmitll_DFFT a=N052 O=N053
+.gate LSmitll_DFFT a=N066 O=N067
+.gate LSmitll_DFFT a=N085 O=N086
+.gate LSmitll_DFFT a=N114 O=N115
+.gate LSmitll_DFFT a=N283 O=N284
+.gate LSmitll_DFFT a=N284 O=N285
+.gate LSmitll_DFFT a=N195 O=N196
+.gate LSmitll_AND2T a=N199 b=N206 O=N205
+.gate LSmitll_OR2T a=branch_offset0 b=branching_and_cond_not_met O=N240
+.gate LSmitll_DFFT a=N265 O=branch_offset1
+.gate LSmitll_OR2T a=not_current_instr_Addrr0_0_not_current_instr_Addrr0_1 b=not_current_instr_Addrr1_0_not_current_instr_Addrr1_1 O=not_cur_instr_Adr0_and_cur_instr_Adr1
+.gate LSmitll_OR2T a=N277 b=N285 O=N279
+.gate LSmitll_DFFT a=N053 O=N054
+.gate LSmitll_DFFT a=N067 O=N068
+.gate LSmitll_DFFT a=N086 O=N087
+.gate LSmitll_DFFT a=N115 O=N116
+.gate LSmitll_OR2T a=N279 b=N029_Data_hndl_OP6 O=N286
+.gate LSmitll_SPLITT a=N286 O=increment_Adrr0_SC_read_next_intsrSC
+.gate LSmitll_OR2T a=N196 b=N205 O=read_next_intsrBranch_indeed
+.gate LSmitll_OR2T a=N240 b=increment_Adrr0_SC_read_next_intsrSC O=adder_b0
+.gate LSmitll_DFFT a=branch_offset1 O=adder_b1
+.gate LSmitll_AND2T a=not_cur_instr_Adr0_and_cur_instr_Adr1 b=increment_Adrr0_SC_read_next_intsrSC O=read_next_intsrSC_indeed
+.gate LSmitll_SPLITT a=adder_a0 O=N223_N233
+.gate LSmitll_SPLITT a=adder_b0 O=N229_N244
+.gate LSmitll_DFFT a=N054 O=N055
+.gate LSmitll_DFFT a=N068 O=N069
+.gate LSmitll_DFFT a=N087 O=N088
+.gate LSmitll_DFFT a=N116 O=N117
+.gate LSmitll_XORT a=N223_N233 b=N229_N244 O=N227
+.gate LSmitll_AND2T a=N223_N233 b=N229_N244 O=N245
+.gate LSmitll_XORT a=adder_a1 b=adder_b1 O=N251
+.gate LSmitll_OR2T a=read_next_intsrSC_indeed b=read_next_intsrBranch_indeed O=P004
+.gate LSmitll_DFFT a=N055 O=N056
+.gate LSmitll_DFFT a=N069 O=N070
+.gate LSmitll_DFFT a=N088 O=N089
+.gate LSmitll_DFFT a=N117 O=N118
+.gate LSmitll_SPLITT a=P004 O=N271_N274
+.gate LSmitll_XORT a=N245 b=N251 O=sum1
+.gate LSmitll_DFFT a=N227 O=sum0
+.gate LSmitll_DFFT a=N271_N274 O=N272
+.gate LSmitll_DFFT a=N271_N274 O=N275
+.gate LSmitll_SPLITT a=N272 O=N235_N273
+.gate LSmitll_SPLITT a=N275 O=N247_N278
+.gate LSmitll_SPLITT a=sum0 O=N224_N230
+.gate LSmitll_SPLITT a=sum1 O=N242_N252
+.gate LSmitll_SPLITT a=N224_N230 O=N254_N255
+.gate LSmitll_SPLITT a=N242_N252 O=N262_N264
+.gate LSmitll_DFFT a=N056 O=N057
+.gate LSmitll_DFFT a=N070 O=N071
+.gate LSmitll_DFFT a=N089 O=N090
+.gate LSmitll_DFFT a=N118 O=N119
+.gate LSmitll_DFFT a=N254_N255 O=nextInstrAddr0_0
+.gate LSmitll_DFFT a=N254_N255 O=nextInstrAddr0_1
+.gate LSmitll_DFFT a=N262_N264 O=nextInstrAddr1_0
+.gate LSmitll_DFFT a=N262_N264 O=nextInstrAddr1_1
+.gate LSmitll_DFFT a=N235_N273 O=readNextInstr0
+.gate LSmitll_DFFT a=N247_N278 O=readNextInstr1
+.gate LSmitll_SPLITT a=N235_N273 O=P005_N238
+.gate LSmitll_NDROT a=P006 b=P005_N238 O=N234
+.gate LSmitll_AND2T a=N224_N230 b=P005_N238 O=P006
+.gate LSmitll_SPLITT a=N247_N278 O=P007_N249
+.gate LSmitll_NDROT a=P008 b=P007_N249 O=N246
+.gate LSmitll_AND2T a=N242_N252 b=P007_N249 O=P008
+.gate LSmitll_DFFT a=N057 O=N058
+.gate LSmitll_DFFT a=N071 O=N072
+.gate LSmitll_DFFT a=N090 O=N091
+.gate LSmitll_DFFT a=N119 O=N120
+.gate LSmitll_SPLITT a=N234 O=N221_N225
+.gate LSmitll_SPLITT a=N246 O=N241_N248
+.gate LSmitll_DFFT a=N221_N225 O=adder_a0
+.gate LSmitll_DFFT a=N241_N248 O=adder_a1
+.gate LSmitll_NOTT a=N221_N225 O=N231
+.gate LSmitll_NOTT a=N241_N248 O=N250
+.gate LSmitll_SPLITT a=N250 O=not_current_instr_Addrr1_0_not_current_instr_Addrr1_1
+.gate LSmitll_SPLITT a=N231 O=not_current_instr_Addrr0_0_not_current_instr_Addrr0_1
+.gate LSmitll_DFFT a=N058 O=N059
+.gate LSmitll_DFFT a=N072 O=P009
+.gate LSmitll_DFFT a=N091 O=N092
+.gate LSmitll_DFFT a=N120 O=N121
+.gate LSmitll_SPLITT a=P009 O=N060_N073
+.gate LSmitll_DFFT a=N059 O=write_flags
+.gate LSmitll_DFFT a=N060_N073 O=select1
+.gate LSmitll_DFFT a=N060_N073 O=select0
+.gate LSmitll_DFFT a=N092 O=N093
+.gate LSmitll_DFFT a=N121 O=N122
+.gate LSmitll_DFFT a=N093 O=N094
+.gate LSmitll_DFFT a=N122 O=N123
+.gate LSmitll_DFFT a=N094 O=N095
+.gate LSmitll_DFFT a=N123 O=N124
+.gate LSmitll_OR2T a=N077 b=N095 O=Addr0
+.gate LSmitll_OR2T a=N106 b=N124 O=Addr1
+
+.end instrDec_PClogic_take6

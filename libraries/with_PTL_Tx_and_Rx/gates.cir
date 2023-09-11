@@ -1,0 +1,1766 @@
+* Back-annotated simulation file written by InductEx v.6.0.4 on 29-4-21.
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 29 April 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			a b clk q	
+.subckt LSmitll_NDROT a b clk q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param Lptl = 2e-12
+.param LB = 2e-12
+.param LP = 2e-13
+.param B1 = 0.86
+.param B2 = 1.0
+.param B3 = 1.91
+.param B4 = 1.78
+.param B5 = 1.16
+.param B6 = 0.86
+.param B7 = 1.0
+.param B8 = 2.35
+.param B9 = 1.96
+.param B10 = 2.84
+.param B11 = 0.78
+.param B12 = 0.99
+.param B13 = 0.94
+.param B14 = 2.18
+.param B15 = 1.66
+.param B16 = 1.63
+.param B17 = 1.51
+.param B18 = 2.36
+.param IB1 = 0.000134
+.param IB2 = 0.000198
+.param IB3 = 9.9e-05
+.param IB4 = 0.000134
+.param IB5 = 0.00015199999999999998
+.param IB6 = 0.00013199999999999998
+.param IB7 = 0.000224
+.param IB8 = 9.499999999999999e-05
+.param IB9 = 6.4e-05
+.param IB10 = 0.000196
+.param L2 = 4.0481e-12
+.param L3 = 3.6036e-12
+.param L4 = 7.2183e-12
+.param L5 = 3.0677e-12
+.param L7 = 2.5596e-12
+.param L9 = 4.0481e-12
+.param L10 = 3.6036e-12
+.param L11 = 4.3879e-12
+.param L12 = 3.217e-12
+.param L13 = 3.2439e-12
+.param L15 = 4.3135e-12
+.param L16 = 3.926e-12
+.param L17 = 7.5833e-12
+.param L18 = 1.2875000000000001e-12
+.param L19 = 1.0678000000000002e-12
+.param L21 = 3.7381999999999997e-13
+.param L22 = 5.2995e-13
+.param L23 = 9.5137e-13
+.param L24 = 2.5089e-12
+.param L25 = 1.2790999999999999e-12
+.param L26 = 3.5427e-12
+.param B0Rs = 6.859904417999999
+.param L1 = 2e-12
+.param L8 = 2e-12
+.param L14 = 2e-12
+.param L27 = 2e-12
+.param RB1 = 7.976633044186046
+.param RB2 = 6.859904417999999
+.param RB3 = 3.591572993717277
+.param RB4 = 3.8538788865168536
+.param RB5 = 5.913710705172414
+.param RB6 = 7.976633044186046
+.param RB7 = 6.859904417999999
+.param RB8 = 2.919108262978723
+.param RB9 = 3.4999512336734693
+.param RB10 = 7.976633044186046
+.param RB11 = 7.967368662020905
+.param RB12 = 7.958125774941995
+.param RB13 = 7.948904308227114
+.param RB14 = 7.939704187499999
+.param RB15 = 7.930525338728323
+.param RB16 = 7.921367688221708
+.param RB17 = 7.912231162629757
+.param RB18 = 7.903115688940091
+.param LRB1 = 4.506797669965116e-12
+.param LRB2 = 3.8758459961699995e-12
+.param LRB3 = 2.0292387414502616e-12
+.param LRB4 = 2.1774415708820224e-12
+.param LRB5 = 3.341246548422414e-12
+.param LRB6 = 4.506797669965116e-12
+.param LRB7 = 3.8758459961699995e-12
+.param LRB8 = 1.6492961685829784e-12
+.param LRB9 = 1.97747244702551e-12
+.param LRB10 = 4.506797669965116e-12
+.param LRB11 = 4.506797669965116e-12
+.param LRB12 = 4.506797669965116e-12
+.param LRB13 = 4.506797669965116e-12
+.param LRB14 = 4.506797669965116e-12
+.param LRB15 = 4.506797669965116e-12
+.param LRB16 = 4.506797669965116e-12
+.param LRB17 = 4.506797669965116e-12
+.param LRB18 = 4.506797669965116e-12
+.param LB1 = 2e-12
+.param LB2 = 2e-12
+.param LB3 = 2e-12
+.param LB4 = 2e-12
+.param LB5 = 2e-12
+.param LB6 = 2e-12
+.param LB7 = 2e-12
+.param LB8 = 2e-12
+.param LB9 = 2e-12
+.param LB10 = 2e-12
+.param LP1 = 2e-13
+.param LP2 = 2e-13
+.param LP3 = 2e-13
+.param LP5 = 2e-13
+.param LP6 = 2e-13
+.param LP7 = 2e-13
+.param LP8 = 2e-13
+.param LP10 = 2e-13
+.param LP12 = 2e-13
+.param LP13 = 2e-13
+.param LP14 = 2e-13
+.param LP16 = 2e-13
+.param LP17 = 2e-13
+.param LP18 = 2e-13
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 2 3 154 jjmit area=B1 
+B2 6 7 155 jjmit area=B2 
+B3 8 9 156 jjmit area=B3 
+B4 11 12 157 jjmit area=B4 
+B5 12 13 158 jjmit area=B5 
+B6 17 18 159 jjmit area=B6 
+B7 21 22 160 jjmit area=B7 
+B8 23 24 161 jjmit area=B8 
+B9 26 27 162 jjmit area=B9 
+B10 27 28 163 jjmit area=B10 
+B11 29 30 164 jjmit area=B11 
+B12 34 35 165 jjmit area=B12 
+B13 38 39 166 jjmit area=B13 
+B14 40 41 167 jjmit area=B14 
+B15 44 46 168 jjmit area=B15 
+B16 47 48 169 jjmit area=B16 
+B17 51 52 170 jjmit area=B17 
+B18 53 54 171 jjmit area=B18 
+IB1 0 5 pwl(0 0 5p IB1)
+IB2 0 10 pwl(0 0 5p IB2)
+IB3 0 15 pwl(0 0 5p IB3)
+IB4 0 20 pwl(0 0 5p IB4)
+IB5 0 25 pwl(0 0 5p IB5)
+IB6 0 37 pwl(0 0 5p IB6)
+IB7 0 43 pwl(0 0 5p IB7)
+IB8 0 32 pwl(0 0 5p IB8)
+IB9 0 50 pwl(0 0 5p IB9)
+IB10 0 55 pwl(0 0 5p IB10)
+LB1 4 5 2.101E-12
+LB2 8 10 4.183E-13
+LB3 12 15 2.907E-12
+LB4 19 20 2.228E-12
+LB5 23 25 1.461E-12
+LB6 36 37 2.777E-13
+LB7 42 43 3.002E-12
+LB8 31 32 9.476E-13
+LB9 49 50 5.108E-13
+LB10 53 55 2.133E-12
+LP1 3 0 5.398E-13
+LP2 7 0 5.963E-13
+LP3 9 0 4.237E-13
+LP5 13 0 6.003E-13
+LP6 18 0 5.045E-13
+LP7 22 0 5.781E-13
+LP8 24 0 4.931E-13
+LP10 28 0 4.784E-13
+LP12 35 0 5.289E-13
+LP13 39 0 5.509E-13
+LP14 41 0 4.982E-13
+LP16 48 0 5.004E-13
+LP17 52 0 5.204E-13
+LP18 54 0 4.135E-13
+L1 a 2 1.51E-12
+L2 2 4 4.036E-12
+L3 4 6 3.595E-12
+L4 6 8 7.246E-12
+L5 8 11 3.06E-12
+L7 12 29 2.546E-12
+L8 b 17 1.572E-12
+L9 17 19 4.01E-12
+L10 19 21 3.596E-12
+L11 21 23 4.373E-12
+L12 23 26 3.223E-12
+L13 27 29 3.265E-12
+L14 clk 34 1.573E-12
+L15 34 36 4.349E-12
+L16 36 38 3.941E-12
+L17 38 40 7.501E-12
+L18 40 42 1.301E-12
+L19 42 44 1.505E-12
+L21 30 31 5.791E-13
+L22 31 46 5.223E-13
+L23 46 47 1.048E-12
+L24 47 49 2.514E-12
+L25 49 51 1.269E-12
+L26 51 53 3.539E-12
+L27 53 56 6.608E-13
+RD 56 q 1.36
+RB1 2 102 RB1
+LRB1 102 0 LRB1
+RB2 6 106 RB2
+LRB2 106 0 LRB2
+RB3 8 108 RB3
+LRB3 108 0 LRB3
+RB4 11 111 RB4
+LRB4 111 12 LRB4
+RB5 12 112 RB5
+LRB5 112 0 LRB5
+RB6 17 117 RB6
+LRB6 117 0 LRB6
+RB7 21 121 RB7
+LRB7 121 0 LRB7
+RB8 23 123 RB8
+LRB8 123 0 LRB8
+RB9 26 126 RB9
+LRB9 126 27 LRB9
+RB10 27 127 RB10
+LRB10 127 0 LRB10
+RB11 29 129 RB11
+LRB11 129 30 LRB11
+RB12 34 134 RB12
+LRB12 134 0 LRB12
+RB13 38 138 RB13
+LRB13 138 0 LRB13
+RB14 40 140 RB14
+LRB14 140 0 LRB14
+RB15 44 144 RB15
+LRB15 144 46 LRB15
+RB16 47 147 RB16
+LRB16 147 0 LRB16
+RB17 51 151 RB17
+LRB17 151 0 LRB17
+RB18 53 153 RB18
+LRB18 153 0 LRB18
+.ends
+
+* Back-annotated simulation file written by InductEx v.6.0.4 on 29-4-21.
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 29 April 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			a b clk q
+.subckt LSmitll_XORT a b clk q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param Lptl = 2e-12
+.param LB = 2e-12
+.param LP = 5e-13
+.param B1 = 1.21
+.param B2 = 1.16
+.param B3 = 0.9
+.param B4 = 2.8
+.param B5 = 1.92
+.param B11 = 0.72
+.param B12 = 0.77
+.param B13 = 0.83
+.param B14 = 1.69
+.param B15 = 1.29
+.param B16 = 1.49
+.param B17 = 0.93
+.param B18 = 1.37
+.param IB1 = 0.00022999999999999998
+.param IB2 = 8.9e-05
+.param IB5 = 0.00013199999999999998
+.param IB6 = 0.000178
+.param IB7 = 0.000134
+.param IB8 = 6.599999999999999e-05
+.param L2 = 2.1529e-12
+.param L3 = 1.9729000000000002e-12
+.param L4 = 2.3965999999999997e-12
+.param L5 = 1.6353999999999999e-12
+.param L6 = 2.2793e-12
+.param L14 = 2.2381000000000003e-12
+.param L15 = 2.0205e-12
+.param L16 = 2.0177999999999997e-12
+.param L17 = 1.8032999999999998e-12
+.param L18 = 2.2246e-12
+.param L19 = 1.7515e-12
+.param L20 = 3.8658e-12
+.param B0Rs = 6.859904417999999
+.param B6 = 1.21
+.param B7 = 1.16
+.param B8 = 0.9
+.param B9 = 2.8
+.param B10 = 1.92
+.param IB3 = 0.00022999999999999998
+.param IB4 = 8.9e-05
+.param L1 = 2e-12
+.param L7 = 2e-12
+.param L8 = 2.1529e-12
+.param L9 = 1.9729000000000002e-12
+.param L10 = 2.3965999999999997e-12
+.param L11 = 1.6353999999999999e-12
+.param L12 = 2.2793e-12
+.param L13 = 2e-12
+.param L21 = 2e-12
+.param RB1 = 5.669342494214876
+.param RB2 = 5.913710705172414
+.param RB3 = 7.622116019999999
+.param RB4 = 2.4499658635714283
+.param RB5 = 3.5728668843749998
+.param RB6 = 5.669342494214876
+.param RB7 = 5.913710705172414
+.param RB8 = 7.622116019999999
+.param RB9 = 2.4499658635714283
+.param RB10 = 5.669342494214876
+.param RB11 = 5.664660956234516
+.param RB12 = 5.659987143564356
+.param RB13 = 5.655321037098103
+.param RB14 = 5.650662617792421
+.param RB15 = 5.646011866666666
+.param RB16 = 5.641368764802631
+.param RB17 = 5.636733293344288
+.param RB18 = 5.632105433497537
+.param LRB1 = 3.2031785092314047e-12
+.param LRB2 = 3.341246548422414e-12
+.param LRB3 = 4.3064955513e-12
+.param LRB4 = 1.3842307129178571e-12
+.param LRB5 = 2.0186697896718748e-12
+.param LRB6 = 3.2031785092314047e-12
+.param LRB7 = 3.341246548422414e-12
+.param LRB8 = 4.3064955513e-12
+.param LRB9 = 1.3842307129178571e-12
+.param LRB10 = 3.2031785092314047e-12
+.param LRB11 = 3.203178509231405e-12
+.param LRB12 = 3.203178509231405e-12
+.param LRB13 = 3.203178509231405e-12
+.param LRB14 = 3.203178509231405e-12
+.param LRB15 = 3.203178509231405e-12
+.param LRB16 = 3.203178509231405e-12
+.param LRB17 = 3.203178509231405e-12
+.param LRB18 = 3.203178509231405e-12
+.param LB1 = 2e-12
+.param LB2 = 2e-12
+.param LB3 = 2e-12
+.param LB4 = 2e-12
+.param LB5 = 2e-12
+.param LB6 = 2e-12
+.param LB7 = 2e-12
+.param LB8 = 2e-12
+.param LP1 = 5e-13
+.param LP2 = 5e-13
+.param LP3 = 5e-13
+.param LP4 = 5e-13
+.param LP6 = 5e-13
+.param LP7 = 5e-13
+.param LP8 = 5e-13
+.param LP9 = 5e-13
+.param LP11 = 5e-13
+.param LP12 = 5e-13
+.param LP13 = 5e-13
+.param LP14 = 5e-13
+.param LP17 = 5e-13
+.param LP18 = 5e-13
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 2 3 146 jjmit area=B1 
+B2 6 7 147 jjmit area=B2 
+B3 8 9 148 jjmit area=B3 
+B4 10 11 149 jjmit area=B4 
+B5 10 13 150 jjmit area=B5 
+B6 16 17 151 jjmit area=B6 
+B7 20 21 152 jjmit area=B7 
+B8 22 23 153 jjmit area=B8 
+B9 24 25 154 jjmit area=B9 
+B10 24 27 155 jjmit area=B10 
+B11 32 33 156 jjmit area=B11 
+B12 36 37 157 jjmit area=B12 
+B13 38 39 158 jjmit area=B13 
+B14 40 41 159 jjmit area=B14 
+B15 40 43 160 jjmit area=B15 
+B16 29 30 161 jjmit area=B16 
+B17 30 44 162 jjmit area=B17 
+B18 45 46 163 jjmit area=B18 
+IB1 0 5 pwl(0 0 5p IB1)
+IB2 0 12 pwl(0 0 5p IB2)
+IB3 0 19 pwl(0 0 5p IB3)
+IB4 0 26 pwl(0 0 5p IB4)
+IB5 0 35 pwl(0 0 5p IB5)
+IB6 0 42 pwl(0 0 5p IB6)
+IB7 0 28 pwl(0 0 5p IB7)
+IB8 0 47 pwl(0 0 5p IB8)
+L1 a 2 1.453E-12
+L2 2 4 2.162E-12
+L3 4 6 1.962E-12
+L4 6 8 2.392E-12
+L5 8 10 1.634E-12
+L6 13 14 2.263E-12
+L7 b 16 1.446E-12
+L8 16 18 2.158E-12
+L9 18 20 1.959E-12
+L10 20 22 2.389E-12
+L11 22 24 1.63E-12
+L12 27 14 2.268E-12
+L13 clk 32 1.608E-12
+L14 32 34 2.222E-12
+L15 34 36 2.02E-12
+L16 36 38 2.019E-12
+L17 38 40 1.796E-12
+L18 43 30 2.204E-12
+L19 14 29 1.754E-12
+L20 30 45 3.883E-12
+L21 45 48 1.589E-12
+LP1 3 0 5.123E-13
+LP2 7 0 5.755E-13
+LP3 9 0 5.799E-13
+LP4 11 0 4.826E-13
+LP6 17 0 5.124E-13
+LP7 21 0 5.734E-13
+LP8 23 0 5.803E-13
+LP9 25 0 4.745E-13
+LP11 33 0 5.105E-13
+LP12 37 0 6.091E-13
+LP13 39 0 5.955E-13
+LP14 41 0 5.33E-13
+LP17 44 0 6.204E-13
+LP18 46 0 5.407E-13
+LB1 4 5 1.862E-12
+LB2 10 12 2.299E-12
+LB3 18 19 1.858E-12
+LB4 24 26 2.318E-12
+LB5 34 35 9.457E-13
+LB6 40 42 2.935E-12
+LB7 14 28 4.089E-12
+LB8 45 47 2.014E-12
+RD 48 q 1.36
+RB1 2 102 RB1
+LRB1 102 0 LRB1
+RB2 6 106 RB2
+LRB2 106 0 LRB2
+RB3 8 108 RB3
+LRB3 108 0 LRB3
+RB4 10 110 RB4
+LRB4 110 0 LRB4
+RB5 10 113 RB5
+LRB5 113 13 LRB5
+RB6 16 116 RB6
+LRB6 116 0 LRB6
+RB7 20 120 RB7
+LRB7 120 0 LRB7
+RB8 22 122 RB8
+LRB8 122 0 LRB8
+RB9 24 124 RB9
+LRB9 124 0 LRB9
+RB10 24 127 RB10
+LRB10 127 27 LRB10
+RB11 32 132 RB11
+LRB11 132 0 LRB11
+RB12 36 136 RB12
+LRB12 136 0 LRB12
+RB13 38 138 RB13
+LRB13 138 0 LRB13
+RB14 40 140 RB14
+LRB14 140 0 LRB14
+RB15 40 143 RB15
+LRB15 143 43 LRB15
+RB16 29 129 RB16
+LRB16 129 30 LRB16
+RB17 30 130 RB17
+LRB17 130 0 LRB17
+RB18 45 145 RB18
+LRB18 145 0 LRB18
+.ends
+
+* Back-annotated simulation file written by InductEx v.6.0.4 on 30-4-21.
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 30 April 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			  a b clk q	
+.subckt LSmitll_AND2T a b clk q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param RD = 1.36
+.param LB = 2e-13
+.param Lptl = 2e-12
+.param LP = 2e-13
+.param B1 = 0.88
+.param B2 = 1.76
+.param B3 = 1.32
+.param B4 = 1.13
+.param B5 = 1.53
+.param B6 = 0.9
+.param B7 = 1.5
+.param B8 = 1.76
+.param B14 = 1.26
+.param B15 = 2.04
+.param B16 = 2.27
+.param IB1 = 0.00013099999999999999
+.param IB2 = 0.000113
+.param IB3 = 0.000128
+.param IB4 = 0.000179
+.param IB7 = 6.3e-05
+.param IB8 = 0.000214
+.param L2 = 2.23e-12
+.param L3 = 1.9325e-12
+.param L4 = 6.105e-12
+.param L5 = 1.2908999999999999e-12
+.param L6 = 2.58e-12
+.param L7 = 1.1464e-12
+.param L9 = 1.9428e-12
+.param L10 = 2e-13
+.param L11 = 1.9932e-12
+.param L14 = 2.23e-12
+.param L15 = 1.9325e-12
+.param L16 = 6.105e-12
+.param L17 = 1.2908999999999999e-12
+.param L18 = 2.58e-12
+.param L19 = 1.1464e-12
+.param L20 = 9e-13
+.param L21 = 2e-13
+.param L22 = 2.9249999999999998e-12
+.param L23 = 4.644e-12
+.param B0Rs = 6.859904417999999
+.param B9 = 0.88
+.param B10 = 1.76
+.param B11 = 1.32
+.param B12 = 1.13
+.param B13 = 1.53
+.param IB5 = 0.00013099999999999999
+.param IB6 = 0.000113
+.param L1 = 2e-12
+.param L8 = 2e-12
+.param L13 = 2e-12
+.param L24 = 2e-12
+.param LB1 = 2e-13
+.param LB2 = 2e-13
+.param LB3 = 2e-13
+.param LB4 = 2e-13
+.param LB5 = 2e-13
+.param LB6 = 2e-13
+.param LB7 = 2e-13
+.param LB8 = 2e-13
+.param LP1 = 2e-13
+.param LP2 = 2e-13
+.param LP3 = 2e-13
+.param LP6 = 2e-13
+.param LP7 = 2e-13
+.param LP8 = 2e-13
+.param LP9 = 2e-13
+.param LP10 = 2e-13
+.param LP11 = 2e-13
+.param LP14 = 2e-13
+.param LP15 = 2e-13
+.param LP16 = 2e-13
+.param RB1 = 7.795345929545454
+.param RB2 = 3.897672964772727
+.param RB3 = 5.196897286363636
+.param RB4 = 6.070711874336284
+.param RB5 = 4.483597658823529
+.param RB6 = 7.622116019999999
+.param RB7 = 4.573269612
+.param RB8 = 3.897672964772727
+.param RB9 = 7.795345929545454
+.param RB10 = 7.795345929545454
+.param RB11 = 7.78649763677639
+.param RB12 = 7.7776694081632645
+.param RB13 = 7.768861175537938
+.param RB14 = 7.760072871040723
+.param RB15 = 7.751304427118643
+.param RB16 = 7.742555776523701
+.param LRB1 = 4.4043704501931814e-12
+.param LRB2 = 2.2021852250965907e-12
+.param LRB3 = 2.9362469667954544e-12
+.param LRB4 = 3.429952209e-12
+.param LRB5 = 2.5332326772352937e-12
+.param LRB6 = 4.3064955513e-12
+.param LRB7 = 2.58389733078e-12
+.param LRB8 = 2.2021852250965907e-12
+.param LRB9 = 4.4043704501931814e-12
+.param LRB10 = 4.4043704501931814e-12
+.param LRB11 = 4.4043704501931814e-12
+.param LRB12 = 4.4043704501931814e-12
+.param LRB13 = 4.4043704501931814e-12
+.param LRB14 = 4.4043704501931814e-12
+.param LRB15 = 4.4043704501931814e-12
+.param LRB16 = 4.404370450193182e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 2 4 146 jjmit area=B1 
+B2 5 6 147 jjmit area=B2 
+B3 9 10 148 jjmit area=B3 
+B4 11 13 149 jjmit area=B4 
+B5 12 38 150 jjmit area=B5 
+B6 15 17 151 jjmit area=B6 
+B7 20 19 152 jjmit area=B7 
+B8 24 23 153 jjmit area=B8 
+B9 26 28 154 jjmit area=B9 
+B10 29 30 155 jjmit area=B10 
+B11 33 34 156 jjmit area=B11 
+B12 36 35 157 jjmit area=B12 
+B13 38 37 158 jjmit area=B13 
+B14 39 40 159 jjmit area=B14 
+B15 43 44 160 jjmit area=B15 
+B16 45 47 161 jjmit area=B16 
+IB1 0 3 pwl(0 0 5p IB1)
+IB2 0 8 pwl(0 0 5p IB2)
+IB3 0 16 pwl(0 0 5p IB3)
+IB4 0 21 pwl(0 0 5p IB4)
+IB5 0 27 pwl(0 0 5p IB5)
+IB6 0 32 pwl(0 0 5p IB6)
+IB7 0 42 pwl(0 0 5p IB7)
+IB8 0 46 pwl(0 0 5p IB8)
+LB1 2 3 2.705E-12
+LB2 7 8 3.072E-12
+LB3 15 16 8.269E-13
+LB4 20 21 3.807E-12
+LB5 26 27 2.958E-12
+LB6 31 32 1.53E-12
+LB7 41 42 1.761E-12
+LB8 45 46 3.373E-12
+L1 a 2 1.603E-12
+L2 2 5 2.243E-12
+L3 5 7 1.928E-12
+L4 7 9 6.173E-12
+L5 9 11 1.295E-12
+L6 11 12 2.568E-12
+L7 13 24 1.332E-12
+L8 clk 15 3.135E-12
+L9 15 20 2.099E-12
+L11 20 24 1.991E-12
+L13 b 26 1.592E-12
+L14 26 29 2.218E-12
+L15 29 31 1.949E-12
+L16 31 33 6.082E-12
+L17 33 35 1.263E-12
+L18 35 37 2.595E-12
+L19 36 24 1.287E-12
+L20 38 39 9.063E-13
+L21 39 41 2.265E-13
+L22 41 43 2.896E-12
+L23 43 45 4.653E-12
+L24 45 48 2.426E-12
+LP1 4 0 5.322E-13
+LP2 6 0 5.415E-13
+LP3 10 0 5.529E-13
+LP6 17 0 5.48E-13
+LP7 19 0 5.392E-13
+LP8 23 0 5.294E-13
+LP9 28 0 5.186E-13
+LP10 30 0 4.924E-13
+LP11 34 0 5.748E-13
+LP14 40 0 5.268E-13
+LP15 44 0 5.107E-13
+LP16 47 0 5.28E-13
+RD 48 q RD
+RB1 2 102 RB1
+LRB1 102 0 LRB1
+RB2 5 105 RB2
+LRB2 105 0 LRB2
+RB3 9 109 RB3
+LRB3 109 0 LRB3
+RB4 11 111 RB4
+LRB4 111 13 LRB4
+RB5 12 112 RB5
+LRB5 112 38 LRB5
+RB6 15 115 RB6
+LRB6 115 0 LRB6
+RB7 20 120 RB7
+LRB7 120 0 LRB7
+RB8 24 122 RB8
+LRB8 122 0 LRB8
+RB9 26 126 RB9
+LRB9 126 0 LRB9
+RB10 29 129 RB10
+LRB10 129 0 LRB10
+RB11 33 133 RB11
+LRB11 133 0 LRB11
+RB12 35 135 RB12
+LRB12 135 36 LRB12
+RB13 37 137 RB13
+LRB13 137 38 LRB13
+RB14 39 141 RB14
+LRB14 141 0 LRB14
+RB15 43 143 RB15
+LRB15 143 0 LRB15
+RB16 45 145 RB16
+LRB16 145 0 LRB16
+.ends
+
+* Back-annotated simulation file written by InductEx v.6.0.4 on 27-4-21.
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 8 June 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			  a clk q
+.subckt LSMITLL_DFFT a clk q
+.param Phi0 = 2.067833848e-15
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param LP = 2e-13
+.param IC = 2.5
+.param ICreceive = 2.0
+.param ICtrans = 2.5
+.param Lptl = 2e-12
+.param LB = 2e-12
+.param BiasCoef = 0.7
+.param RD = 1.36
+.param B1 = 1.62
+.param B2 = 1.89
+.param B3 = 1.72
+.param B4 = 2.32
+.param B5 = 2.12
+.param B6 = 1.62
+.param B7 = 1.98
+.param B8 = 1.71
+.param B9 = 2.12
+.param B10 = 2.5
+.param IB1 = 0.000276
+.param IB2 = 0.000235
+.param IB3 = 0.00028399999999999996
+.param IB4 = 0.000312
+.param B0Rs = 6.859904417999999
+.param L1 = 2e-12
+.param L2 = 3.1911016172839507e-12
+.param L3 = 3.1911016172839507e-12
+.param L4 = 5.4704599153439165e-12
+.param L5 = 8.913076931034484e-12
+.param L6 = 2e-12
+.param L7 = 3.1911016172839507e-12
+.param L8 = 3.1911016172839507e-12
+.param L9 = 5.221802646464646e-12
+.param L10 = 4.876966622641509e-12
+.param L11 = 2.4384833113207545e-12
+.param L12 = 2.4384833113207545e-12
+.param L13 = 2e-12
+.param RB1 = 4.234508899999999
+.param RB2 = 3.629579057142857
+.param RB3 = 3.988316522093023
+.param RB4 = 2.956855352586207
+.param RB5 = 3.2358039707547164
+.param RB6 = 4.234508899999999
+.param RB7 = 3.4645981909090904
+.param RB8 = 4.011640010526316
+.param RB9 = 3.2358039707547164
+.param RB10 = 4.234508899999999
+.param LRB1 = 2.5924975284999994e-12
+.param LRB2 = 2.2507121672857143e-12
+.param LRB3 = 2.453398834982558e-12
+.param LRB4 = 1.870623274211207e-12
+.param LRB5 = 2.0282292434764148e-12
+.param LRB6 = 2.5924975284999994e-12
+.param LRB7 = 2.157497977863636e-12
+.param LRB8 = 2.4665766059473683e-12
+.param LRB9 = 2.0282292434764148e-12
+.param LRB10 = 2.5924975284999994e-12
+.param LP1 = 2e-13
+.param LP2 = 2e-13
+.param LP4 = 2e-13
+.param LP5 = 2e-13
+.param LP6 = 2e-13
+.param LP7 = 2e-13
+.param LP9 = 2e-13
+.param LP10 = 2e-13
+.param LB1 = 2e-12
+.param LB2 = 2e-12
+.param LB3 = 2e-12
+.param LB4 = 2e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+IB1 0 5 pwl(0 0 5p IB1)
+IB2 0 11 pwl(0 0 5p IB2)
+IB3 0 18 pwl(0 0 5p IB3)
+IB4 0 25 pwl(0 0 5p IB4)
+B1 2 3 127 jjmit area=B1 
+B2 6 7 128 jjmit area=B2 
+B3 8 9 129 jjmit area=B3 
+B4 9 10 130 jjmit area=B4 
+B5 12 13 131 jjmit area=B5 
+B6 15 16 132 jjmit area=B6 
+B7 19 20 133 jjmit area=B7 
+B8 21 12 134 jjmit area=B8 
+B9 22 23 135 jjmit area=B9 
+B10 26 27 136 jjmit area=B10 
+L1 a 2 1.587E-12
+L2 2 4 3.253E-12
+L3 4 6 3.304E-12
+L4 6 8 3.979E-12
+L5 9 12 7.521E-12
+L6 clk 15 1.6E-12
+L7 15 17 3.042E-12
+L8 17 19 3.045E-12
+L9 19 21 4.21E-12
+L10 12 22 4.022E-12
+L11 22 24 2.164E-12
+L12 24 26 2.183E-12
+L13 26 28 2.536E-12
+LP1 3 0 5.021E-13
+LP2 7 0 5.102E-13
+LP4 10 0 5.275E-13
+LP5 13 0 5.37E-13
+LP6 16 0 5.005E-13
+LP7 20 0 5.161E-13
+LP9 23 0 5.212E-13
+LP10 27 0 5.039E-13
+LB1 4 5 3.559E-12
+LB2 9 11 2.45E-12
+LB3 17 18 2.72E-12
+LB4 24 25 1.988E-12
+RB1 2 102 RB1
+RB2 6 106 RB2
+RB3 8 108 RB3
+RB4 9 109 RB4
+RB5 12 112 RB5
+RB6 15 115 RB6
+RB7 19 119 RB7
+RB8 21 121 RB8
+RB9 22 122 RB9
+RB10 26 126 RB10
+LRB1 102 0 LRB1
+LRB2 106 0 LRB2
+LRB3 108 9 LRB3
+LRB4 109 0 LRB4
+LRB5 112 0 LRB5
+LRB6 115 0 LRB6
+LRB7 119 0 LRB7
+LRB8 121 12 LRB8
+LRB9 122 0 LRB9
+LRB10 126 0 LRB10
+RD 28 q RD
+.ends
+
+* Back-annotated simulation file written by InductEx v.6.0 on 2021/06/23.
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 23 June 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports a clk q
+.subckt LSmitll_NOTT a clk q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param RD = 1.36
+.param LB = 2e-13
+.param Lptl = 2e-12
+.param LP = 5e-13
+.param B1 = 1.26
+.param B2 = 1.42
+.param B3 = 1.72
+.param B4 = 1.22
+.param B5 = 0.77
+.param B6 = 1.4
+.param B7 = 2.5
+.param B8 = 2.0
+.param B9 = 1.35
+.param B10 = 1.04
+.param B11 = 1.41
+.param B12 = 2.5
+.param IB1 = 0.000173
+.param IB2 = 0.00012299999999999998
+.param IB3 = 0.00022999999999999998
+.param IB4 = 0.000112
+.param IB5 = 0.000112
+.param IB6 = 0.000108
+.param IB7 = 0.000187
+.param L2 = 4.4717999999999996e-12
+.param L3 = 2.6117e-12
+.param L4 = 1.1676e-12
+.param L5 = 2.6532e-12
+.param L7 = 3.1681e-12
+.param L8 = 8.6946e-13
+.param L10 = 2.5468e-12
+.param L11 = 2.1566e-12
+.param L12 = 9.918e-13
+.param L13 = 3.286e-12
+.param L14 = 6.5962e-12
+.param L15 = 4.2413e-13
+.param L16 = 2.2846999999999997e-12
+.param L17 = 4.998600000000001e-13
+.param L18 = 2.8417e-13
+.param L19 = 7.3651e-12
+.param L20 = 7.4611e-13
+.param L21 = 4.5195e-12
+.param B0Rs = 6.859904417999999
+.param LB1 = 2e-13
+.param LB2 = 2e-13
+.param LB3 = 2e-13
+.param LB4 = 2e-13
+.param LB5 = 2e-13
+.param LB6 = 2e-13
+.param LB7 = 2e-13
+.param L1 = 2e-12
+.param L9 = 2e-12
+.param L22 = 2e-12
+.param RB1 = 5.444368585714285
+.param RB2 = 4.830918604225352
+.param RB3 = 3.988316522093023
+.param RB4 = 5.622872473770491
+.param RB5 = 8.908966776623375
+.param RB6 = 4.899931727142857
+.param RB7 = 2.7439617671999996
+.param RB8 = 3.4299522089999996
+.param RB9 = 5.081410679999999
+.param RB10 = 5.444368585714285
+.param RB11 = 5.440051084853291
+.param RB12 = 5.435740426307448
+.param LRB1 = 3.0760682509285713e-12
+.param LRB2 = 2.729469011387324e-12
+.param LRB3 = 2.253398834982558e-12
+.param LRB4 = 3.1769229476803277e-12
+.param LRB5 = 5.033566228792207e-12
+.param LRB6 = 2.7684614258357143e-12
+.param LRB7 = 1.5503383984679998e-12
+.param LRB8 = 1.9379229980849997e-12
+.param LRB9 = 2.8709970341999998e-12
+.param LRB10 = 3.0760682509285713e-12
+.param LRB11 = 3.0760682509285713e-12
+.param LRB12 = 3.0760682509285713e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 2 3 139 jjmit area=B1 
+B2 6 7 140 jjmit area=B2 
+B3 10 12 141 jjmit area=B3 
+B4 15 14 142 jjmit area=B4 
+B5 15 31 143 jjmit area=B5 
+B6 17 18 144 jjmit area=B6 
+B7 21 22 145 jjmit area=B7 
+B8 25 26 146 jjmit area=B8 
+B9 29 30 147 jjmit area=B9 
+B10 32 33 148 jjmit area=B10 
+B11 36 37 149 jjmit area=B11 
+B12 38 40 150 jjmit area=B12 
+IB1 0 5 pwl(0 0 5p IB1)
+IB2 0 9 pwl(0 0 5p IB2)
+IB3 0 20 pwl(0 0 5p IB3)
+IB4 0 24 pwl(0 0 5p IB4)
+IB5 0 28 pwl(0 0 5p IB5)
+IB6 0 35 pwl(0 0 5p IB6)
+IB7 0 39 pwl(0 0 5p IB7)
+L1 a 2 1.508E-012
+L2 2 4 4.511E-012
+L3 4 6 2.586E-012
+L4 6 8 1.167E-012
+L5 8 10 2.704E-012
+L7 10 13 3.024E-012
+L8 10 14 9.596E-013
+L9 clk 17 1.473E-012
+L10 17 19 2.513E-012 
+L11 19 21 2.146E-012
+L12 21 23 1E-012
+L13 23 25 3.272E-012
+L14 25 27 6.531E-012
+L15 27 15 3.069E-013
+L16 25 29 2.299E-012
+L17 30 31 9.629E-013
+L18 30 32 4.911E-013
+L19 32 34 7.301E-012
+L20 34 36 6.786E-013
+L21 36 38 4.551E-012
+L22 38 41 5.967E-013
+RN 13 0 3.54
+RD 41 q RD
+LB1 4 5 4.946E-013
+LB2 8 9 1.09E-012
+LB3 19 20 3.26E-012
+LB4 23 24 1.96E-012
+LB5 27 28 2.94E-012
+LB6 34 35 1.295E-012
+LB7 38 39 2.398E-012
+LP1 3 0 4.82E-013
+LP2 7 0 5.068E-013
+LP3 12 0 5.164E-013
+LP6 18 0 4.841E-013
+LP7 22 0 4.831E-013
+LP8 26 0 5.5E-013
+LP10 33 0 6.016E-013
+LP11 37 0 5.043E-013
+LP12 40 0 3.837E-013
+RB1 2 102 RB1
+LRB1 102 0 LRB1
+RB2 6 106 RB2
+LRB2 106 0 LRB2
+RB3 10 110 RB3
+LRB3 110 0 LRB3
+RB4 14 114 RB4
+LRB4 114 15 LRB4
+RB5 15 115 RB5
+LRB5 115 31 LRB5
+RB6 17 117 RB6
+LRB6 117 0 LRB6
+RB7 21 121 RB7
+LRB7 121 0 LRB7
+RB8 25 125 RB8
+LRB8 125 0 LRB8
+RB9 29 129 RB9
+LRB9 129 30 LRB9
+RB10 32 132 RB10
+LRB10 132 0 LRB10
+RB11 36 136 RB11
+LRB11 136 0 LRB11
+RB12 38 138 RB12
+LRB12 138 0 LRB12
+.ends
+
+* Back-annotated simulation file written by InductEx v.6.0.4 on 28-4-21.
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 28 April 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$ports a b clk q
+.subckt LSmitll_OR2T a b clk q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param LP = 2e-13
+.param Lptl = 2e-12
+.param LB = 2e-12
+.param RD = 1.36
+.param B1 = 1.17
+.param B2 = 1.95
+.param B3 = 1.31
+.param B4 = 1.17
+.param B5 = 1.95
+.param B6 = 1.31
+.param B7 = 2.2
+.param B8 = 1.72
+.param B9 = 0.81
+.param B10 = 0.75
+.param B11 = 0.63
+.param B12 = 1.4
+.param B13 = 1.62
+.param B14 = 1.9
+.param IB1 = 0.00014099999999999998
+.param IB2 = 0.00014099999999999998
+.param IB3 = 0.000328
+.param IB4 = 8.099999999999999e-05
+.param IB5 = 9.8e-05
+.param IB6 = 8.099999999999999e-05
+.param IB7 = 0.000177
+.param L2 = 2.0821999999999998e-12
+.param L3 = 2.6808999999999996e-12
+.param L4 = 1.3486e-12
+.param L6 = 2.0821999999999998e-12
+.param L7 = 2.6808999999999996e-12
+.param L8 = 1.3486e-12
+.param L10 = 1.889e-12
+.param L12 = 5.4916e-12
+.param L14 = 3.3652000000000002e-12
+.param L15 = 4.0267e-12
+.param L16 = 6.999999999999999e-13
+.param L17 = 1.5727e-12
+.param L18 = 2.0776e-12
+.param L19 = 8.85e-13
+.param L20 = 4.2903999999999996e-12
+.param B0Rs = 6.859904417999999
+.param L1 = 2e-12
+.param L5 = 2e-12
+.param L13 = 2e-12
+.param L21 = 2e-12
+.param LB1 = 2e-12
+.param LB2 = 2e-12
+.param LB3 = 2e-12
+.param LB4 = 2e-12
+.param LB5 = 2e-12
+.param LB6 = 2e-12
+.param LB7 = 2e-12
+.param LP1 = 2e-13
+.param LP2 = 2e-13
+.param LP4 = 2e-13
+.param LP5 = 2e-13
+.param LP8 = 2e-13
+.param LP9 = 2e-13
+.param LP10 = 2e-13
+.param LP12 = 2e-13
+.param LP13 = 2e-13
+.param LP14 = 2e-13
+.param RB1 = 5.863166169230769
+.param RB2 = 3.5178997015384614
+.param RB3 = 5.236568258015266
+.param RB4 = 5.863166169230769
+.param RB5 = 3.5178997015384614
+.param RB6 = 5.236568258015266
+.param RB7 = 3.118138371818181
+.param RB8 = 3.988316522093023
+.param RB9 = 8.469017799999998
+.param RB10 = 5.863166169230769
+.param RB11 = 5.858159195559351
+.param RB12 = 5.853160766211603
+.param RB13 = 5.848170859335037
+.param RB14 = 5.843189453151618
+.param LRB1 = 3.5126888856153843e-12
+.param LRB2 = 2.1876133313692306e-12
+.param LRB3 = 3.1586610657786253e-12
+.param LRB4 = 3.5126888856153843e-12
+.param LRB5 = 2.1876133313692306e-12
+.param LRB6 = 3.1586610657786253e-12
+.param LRB7 = 1.9617481800772725e-12
+.param LRB8 = 2.453398834982558e-12
+.param LRB9 = 4.984995056999999e-12
+.param LRB10 = 3.5126888856153843e-12
+.param LRB11 = 3.5126888856153847e-12
+.param LRB12 = 3.5126888856153847e-12
+.param LRB13 = 3.5126888856153847e-12
+.param LRB14 = 3.5126888856153847e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 2 3 144 jjmit area=B1 
+B2 6 7 145 jjmit area=B2 
+B3 6 8 146 jjmit area=B3 
+B4 11 12 147 jjmit area=B4 
+B5 15 16 148 jjmit area=B5 
+B6 15 43 149 jjmit area=B6 
+B7 19 22 150 jjmit area=B7 
+B8 22 21 151 jjmit area=B8 
+B9 26 27 152 jjmit area=B9 
+B10 30 31 153 jjmit area=B10 
+B11 32 24 154 jjmit area=B11 
+B12 33 34 155 jjmit area=B12 
+B13 37 38 156 jjmit area=B13 
+B14 39 41 157 jjmit area=B14 
+IB1 0 5  pwl(0 0 5p IB1)
+IB2 0 14 pwl(0 0 5p IB2)
+IB3 0 18 pwl(0 0 5p IB3)
+IB4 0 23 pwl(0 0 5p IB4)
+IB5 0 29 pwl(0 0 5p IB5)
+IB6 0 36 pwl(0 0 5p IB6)
+IB7 0 40 pwl(0 0 5p IB7)
+L1 a 2 1.593E-12		
+L2 2 4 2.116E-12	
+L3 4 6 2.655E-12	
+L4 8 9 1.349E-12	
+L5 b 11 1.596E-12			
+L6 11 13 2.104E-12	
+L7 13 15 2.655E-12		
+L8 43 9 1.348E-12		
+L10 9 19 1.883E-12	
+L12 22 24 5.465E-12	
+L13 clk 26 1.54E-12		
+L14 26 28 3.367E-12	
+L15 28 30 4.045E-12	
+L16 30 32 5.696E-13	
+L17 24 33 1.584E-12	
+L18 33 35 2.075E-12	
+L19 35 37 9.15E-13	
+L20 37 39 4.26E-12	
+L21 39 42 7.721E-13	
+RD 42 q RD
+LB1 4 5 2.162E-12
+LB2 13 14 2.177E-12
+LB3 9 18	2.831E-12
+LB4 22 23	3.933E-12
+LB5 28 29	1.367E-12
+LB6 35 36	2.221E-12
+LB7 39 40	2.035E-12
+LP1 3 0		4.886E-13
+LP2 7 0		4.645E-13
+LP4 12 0	4.935E-13
+LP5 16 0	4.65E-13
+LP8 21 0	5.102E-13
+LP9 27 0	5.216E-13
+LP10 31 0	5.841E-13
+LP12 34 0	4.758E-13
+LP13 38 0	5.26E-13
+LP14 41 0	4.366E-13
+RB1 2 102 RB1
+LRB1 102 0 LRB1
+RB2 6 106 RB2
+LRB2 106 0 LRB2
+RB3 6 108 RB3
+LRB3 108 8 LRB3
+RB4 11 111 RB4
+LRB4 111 0 LRB4
+RB5 15 115 RB5
+LRB5 115 0 LRB5
+RB6 15 143 RB6
+LRB6 143 43 LRB6
+RB7 19 119 RB7
+LRB7 119 22 LRB7
+RB8 22 122 RB8
+LRB8 122 0 LRB8
+RB9 26 126 RB9
+LRB9 126 0 LRB9
+RB10 30 130 RB10
+LRB10 130 0 LRB10
+RB11 32 132 RB11
+LRB11 132 24 LRB11
+RB12 33 133 RB12
+LRB12 133 0 LRB12
+RB13 37 137 RB13
+LRB13 137 0 LRB13
+RB14 39 139 RB14
+LRB14 139 0 LRB14
+.ends
+
+* Back-annotated simulation file written by InductEx v.6.0.4 on 26-4-21.
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 26 April 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			  a q0 q1
+.subckt LSMITLL_SPLITT a q0 q1
+.param Phi0 = 2.067833848e-15
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param LP = 2e-13
+.param IC = 2.5
+.param ICreceive = 1.6
+.param ICtrans = 2.5
+.param Lptl = 2e-12
+.param BiasCoef = 0.7
+.param RD = 1.36
+.param B1 = 1.6
+.param B2 = 1.67
+.param B3 = 2.5
+.param B4 = 2.5
+.param IB1 = 0.000225
+.param IB2 = 0.000185
+.param IB3 = 0.000185
+.param B0Rs = 6.859904417999999
+.param L1 = 2e-12
+.param L2 = 3.2309903875e-12
+.param L3 = 3.2309903875e-12
+.param L4 = 3.095559652694611e-12
+.param L5 = 3.095559652694611e-12
+.param L6 = 2e-12
+.param L7 = 3.095559652694611e-12
+.param L8 = 2e-12
+.param RB1 = 4.2874402612499996
+.param RB2 = 4.107727196407185
+.param RB3 = 2.7439617671999996
+.param RB4 = 2.7439617671999996
+.param LRB1 = 2.42240374760625e-12
+.param LRB2 = 2.32086586597006e-12
+.param LRB3 = 1.5503383984679998e-12
+.param LRB4 = 1.5503383984679998e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+IB1 0 4 pwl(0 0 5p IB1)
+IB2 0 8 pwl(0 0 5p IB2)
+IB3 0 11 pwl(0 0 5p IB3)
+B1 2 3 112 jjmit area=B1 
+B2 5 6 113 jjmit area=B2 
+B3 8 9 114 jjmit area=B3 
+B4 11 12 115 jjmit area=B4 
+L1 a 2 1.515E-12
+L2 2 4 2.836E-12
+L3 4 5 2.85E-12
+L4 5 7 2.68E-12
+L5 7 8 2.699E-12
+L6 8 10 2.364E-12
+L7 7 11 2.704E-12
+L8 11 13 2.369E-12
+LP1 3 0 4.521E-13
+LP2 6 0 5.395E-13
+LP3 9 0 5.061E-13
+LP4 12 0 5.078E-13
+RB1 2 102 RB1
+LRB1 102 0 LRB1
+RB2 5 105 RB2
+LRB2 105 0 LRB2
+RB3 8 108 RB3
+LRB3 108 0 LRB3
+RB4 11 111 RB4
+LRB4 111 0 LRB4
+RD1 13 q0 RD
+RD2 10 q1 RD
+.ends
+
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 2 June 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+*For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			a q
+.subckt LSmitll_DCSFQ a q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param LB = 2e-12
+.param LP = 2e-13
+.param B1 = 2.25
+.param B2 = 2.25
+.param B3 = 2.5
+.param L1 = 1e-12
+.param L2 = 3.9e-12
+.param L3 = 6e-13
+.param L4 = 1.1000000000000002e-12
+.param L5 = 4.5e-12
+.param L6 = 2e-12
+.param IB1 = 0.00027499999999999996
+.param IB2 = 0.000175
+.param B0Rs = 6.859904417999999
+.param LB1 = 2e-12
+.param LB2 = 2e-12
+.param LP2 = 2e-13
+.param LP3 = 2e-13
+.param RB1 = 3.0488464079999997
+.param RB2 = 3.0488464079999997
+.param RB3 = 2.7439617671999996
+.param LRB1 = 1.7225982205199998e-12
+.param LRB2 = 1.7225982205199998e-12
+.param LRB3 = 1.5503383984679998e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 2 3 100000 jjmit area=B1 
+B2 5 6 100001 jjmit area=B2 
+B3 7 8 100002 jjmit area=B3 
+IB1 0 4 pwl(0 0 5p IB1)
+IB2 0 9 pwl(0 0 5p IB2)
+LB1 3 4 LB1
+LB2 7 9 LB2
+L1 a 1 L1
+L2 1 0 L2
+L3 1 2 L3
+L4 3 5 L4
+L5 5 7 L5
+L6 7 q L6
+LP2 6 0 LP2
+LP3 8 0 LP3
+RB1 2 102 RB1
+LRB1 102 3 LRB1
+RB2 5 105 RB2
+LRB2 105 0 LRB2
+RB3 7 107 RB3
+LRB3 107 0 LRB3
+.ends
+
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 24 April 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+*For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			a q
+.subckt LSmitll_PTLTX a q
+.param Phi0 = 2.067833848e-15
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param LP = 2e-13
+.param LB = 2e-12
+.param Lptl = 2e-12
+.param RD = 1.36
+.param B1 = 2.0
+.param B2 = 1.62
+.param IB1 = 0.00022999999999999998
+.param IB2 = 8.2e-05
+.param L1 = 2.5e-12
+.param L2 = 3.2999999999999997e-12
+.param B0Rs = 6.859904417999999
+.param L3 = 2e-12
+.param LB1 = 2e-12
+.param LB2 = 2e-12
+.param LP1 = 2e-13
+.param LP2 = 2e-13
+.param RB1 = 3.4299522089999996
+.param RB2 = 4.234508899999999
+.param LRB1 = 1.9379229980849997e-12
+.param LRB2 = 2.3924975284999994e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 3 8 100000 jjmit area=B1 
+B2 4 10 100001 jjmit area=B2 
+IB1 0 5 pwl(0 0 5p IB1)
+IB2 0 6 pwl(0 0 5p IB2)
+LB1 5 3 LB1
+LB2 6 4 LB2
+L1 a 3 L1
+L2 3 4 L2
+L3 4 7 L3
+RD 7 q RD
+LP1 8 0 LP1
+LP2 10 0 LP2
+RB1 3 9 RB1
+RB2 4 11 RB2
+LRB1 9 0 LRB1
+LRB2 11 0 LRB2
+.ends
+
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 3 June 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+*For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 			a q
+.subckt LSmitll_PTLRX a q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param LP = 5e-13
+.param LB = 2e-12
+.param Lptl = 2e-12
+.param B1 = 1.0
+.param B2 = 1.0
+.param B3 = 1.0
+.param IB1 = 0.000155
+.param L2 = 4.3e-12
+.param L3 = 4.6e-12
+.param L4 = 5e-12
+.param L5 = 2.3e-12
+.param B0Rs = 6.859904417999999
+.param L1 = 2e-12
+.param LB1 = 2e-12
+.param LP1 = 5e-13
+.param LP2 = 5e-13
+.param LP3 = 5e-13
+.param RB1 = 6.859904417999999
+.param RB2 = 6.859904417999999
+.param RB3 = 6.859904417999999
+.param LRB1 = 3.8758459961699995e-12
+.param LRB2 = 3.8758459961699995e-12
+.param LRB3 = 3.8758459961699995e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 3 8 100000 jjmit area=B1 
+B2 4 10 100001 jjmit area=B2 
+B3 5 12 100002 jjmit area=B3 
+IB1 0 6 pwl(0 0 5p IB1)
+LB1 6 7 LB1
+L1 a 3 L1
+L2 3 7 L2
+L3 7 4 L3
+L4 4 5 L4
+L5 5 q L5
+LP1 8 0 LP1
+LP2 10 0 LP2
+LP3 12 0 LP3
+RB1 3 9 RB1
+RB2 4 11 RB2
+RB3 5 13 RB3
+LRB1 9 0 LRB1
+LRB2 11 0 LRB2
+LRB3 13 0 LRB3
+.ends
+
+* Adapted from Fluxonics SDQDC_v5
+* Author: L. Schindler
+* Version: 2.1
+* Last modification date: 27 April 2021
+* Last modification by: L. Schindler
+* Copyright (c) 2018-2021 Lieze Schindler, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+* For questions about the library, contact Lieze Schindler, lschindler@sun.ac.za
+*$Ports 	a 	q
+.subckt LSmitll_SFQDC a q
+.param B0 = 1.0
+.param Ic0 = 0.0001
+.param IcRs = 0.0006859904417999999
+.param Rsheet = 2.0
+.param Lsheet = 1.13e-12
+.param B1 = 3.25
+.param B2 = 2.0
+.param B3 = 1.5
+.param B4 = 3.0
+.param B5 = 1.75
+.param B6 = 1.5
+.param B7 = 1.5
+.param B8 = 2.0
+.param L1 = 1.522e-12
+.param L3 = 8.269999999999999e-13
+.param L4 = 1.12884e-12
+.param L5 = 1.11098e-12
+.param L6 = 5.94e-12
+.param L7 = 3.216e-12
+.param L10 = 2.15e-13
+.param L13 = 3.6989999999999995e-12
+.param L17 = 1.51e-12
+.param L18 = 2.0099999999999997e-12
+.param L19 = 9.54e-13
+.param L4b = 1.78e-13
+.param LP1 = 1.4e-13
+.param LP4 = 5.24e-13
+.param LP5 = 5.16e-13
+.param LP7 = 8.599999999999999e-14
+.param LP8 = 2.26e-13
+.param LR1 = 9.1e-13
+.param R1 = 0.375
+.param IB1 = 0.00028
+.param IB2 = 0.00015
+.param IB3 = 0.00021999999999999998
+.param IB4 = 7.999999999999999e-05
+.param B0Rs = 6.859904417999999
+.param RB1 = 2.1107398209230768
+.param RB2 = 3.4299522089999996
+.param RB3 = 4.573269612
+.param RB4 = 2.286634806
+.param RB5 = 3.9199453817142853
+.param RB6 = 4.573269612
+.param RB7 = 4.573269612
+.param RB8 = 3.4299522089999996
+.param LRB1 = 1.1925679988215383e-12
+.param LRB2 = 1.9379229980849997e-12
+.param LRB3 = 2.58389733078e-12
+.param LRB4 = 1.29194866539e-12
+.param LRB5 = 2.2147691406685712e-12
+.param LRB6 = 2.58389733078e-12
+.param LRB7 = 2.58389733078e-12
+.param LRB8 = 1.9379229980849997e-12
+.model jjmit jj(rtype=1, vg=2.8mV, cap=0.07pF, r0=160, rn=16, icrit=0.1mA)
+B1 8 20 100000 jjmit area=B1 
+B2 12 13 100001 jjmit area=B2 
+B3 3 4 100002 jjmit area=B3 
+B4 13 29 100003 jjmit area=B4 
+B5 5 16 100004 jjmit area=B5 
+B6 6 7 100005 jjmit area=B6 
+B7 10 22 100006 jjmit area=B7 
+B8 11 24 100007 jjmit area=B8 
+IB1 0 8 pwl(0 0 5p IB1)
+IB2 0 4 pwl(0 0 5p IB2)
+IB3 0 7 pwl(0 0 5p IB3)
+IB4 0 18 pwl(0 0 5p IB4)
+L1 a 8 L1
+L3 8 17 L3
+L4 3 17 L4
+L5 17 12 L5
+L6 5 9 L6
+L7 9 13 L7
+L10 9 6 L10
+L13 10 18 L13
+L17 11 q L17
+L18 18 11 L18
+L19 7 10 L19
+L4b 4 5 L4b
+LRB1 8 21 LRB1
+LRB2 12 27 LRB2
+LRB3 3 14 LRB3
+LRB4 13 28 LRB4
+LRB5 5 15 LRB5
+LRB6 6 19 LRB6
+LRB7 10 23 LRB7
+LRB8 11 25 LRB8
+LP1 20 0 LP1
+LP4 29 0 LP4
+LP5 16 0 LP5
+LP7 22 0 LP7
+LP8 24 0 LP8
+LR1 9 26 LR1
+R1 26 0 R1
+RB1 21 0 RB1
+RB2 27 13 RB2
+RB3 14 4 RB3
+RB4 28 0 RB4
+RB5 15 0 RB5
+RB6 19 7 RB6
+RB7 23 0 RB7
+RB8 25 0 RB8
+.ends
+
+* Author: C. J. Fourie
+* Version: 1.1.40
+* Last modification date: 14 April 2020
+* Last modification by: C. J. Forie
+* Copyright (c) 2018-2020 Coenrad Fourie, Stellenbosch University
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this cell library and associated documentation files (the "Library"), to deal
+* in the Library without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Library, and to permit persons to whom the Library is
+* furnished to do so, subject to the following conditions:
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Library.
+* THE LIBRARY IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE LIBRARY OR THE USE OR OTHER DEALINGS IN THE
+* LIBRARY.
+*For questions about the library, contact Lieze Schindler, 17528283@sun.ac.za
+* Ports 			OUT	
+.subckt PAD         a
+Rlarge   a  0    1e12
+.ends PAD

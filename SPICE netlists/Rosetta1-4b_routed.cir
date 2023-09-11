@@ -1,0 +1,206 @@
+.include /libraries/with_PTL_Tx_and_Rx/gates.cir
+.include /ALU_regFile_routed.cir
+.include /Instruction_memory_and_programmer_routed.cir
+.include /Control_Unit_routed.cir
+
+.subckt CPU_take_4 program_line1t load1t program_line2t load2t program_line3t load3t program_line4t load4t read_at_first_addr1t read_at_first_addr0t GCLK_progmer_instr_memt GCLK_instr_dect GCLK_ALU_Reg_filet reg1_out0_pad reg1_out1_pad reg1_out2_pad reg1_out3_pad reg2_out0_pad reg2_out1_pad reg2_out2_pad reg2_out3_pad regFlags_out0_pad regFlags_out1_pad regFlags_out2_pad
+
+XALU_Reg_file ALU_Reg_file_final_route Imm3 Imm2 Imm1 Imm0 select1 select0 read Addr0 Addr1 write_flags Op_Arith Op_And Op_Xor Cmpl_b1 Cmpl_b0 Cin GCLK_ALU_Reg_filet reg1_out0_pad reg1_out1_pad reg1_out2_pad reg1_out3_pad reg2_out0_pad reg2_out1_pad reg2_out2_pad reg2_out3_pad regFlags_out0 regFlags_out0_pad regFlags_out1 regFlags_out1_pad regFlags_out2 regFlags_out2_pad
+Xprogrammer_instr_memory programmer_instr_memory_final_route program_line4t load4t program_line3t load3t program_line2t load2t program_line1t load1t nextInstrAddr1_1 nextInstrAddr1_0 nextInstrAddr0_1 nextInstrAddr0_0 readNextInstr1 readNextInstr0 read_at_first_addr1t read_at_first_addr0t GCLK_progmer_instr_memt bit_out0 bit_out1 bit_out2 bit_out3 bit_out4 bit_out5 bit_out6
+XContol_Unit Control_Unit_final_route bit_out0 bit_out1 bit_out2 bit_out3 bit_out4 bit_out5 bit_out6 regFlags_out0 regFlags_out1 regFlags_out2 GCLK_instr_dect Imm0 Imm1 Imm2 Imm3 select1 select0 read Addr1 Addr0 write_flags Op_Arith Op_And Op_Xor Cmpl_b1 Cmpl_b0 Cin readNextInstr1 readNextInstr0 nextInstrAddr1_1 nextInstrAddr1_0 nextInstrAddr0_1 nextInstrAddr0_0
+*bit_out0 bit_out1 bit_out2 bit_out3 bit_out4 bit_out5 bit_out6
+.ends CPU_take_4
+
+* Xprogrammer_instr_memory programmer_instr_memory_route program_line1t load1t program_line2t load2t program_line3t load3t program_line4t load4t nextInstrAddr1_1 nextInstrAddr1_0 nextInstrAddr0_1 nextInstrAddr0_0 readNextInstr1 readNextInstr0 read_at_first_addr1t read_at_first_addr0t GCLK_progmer_instr_memt instr_mem_bit_out0 instr_mem_bit_out1 instr_mem_bit_out2 instr_mem_bit_out3 instr_mem_bit_out4 instr_mem_bit_out5 instr_mem_bit_out6 
+* XContol_Unit Contol_Unit instr_mem_bit_out0 instr_mem_bit_out1 instr_mem_bit_out2 instr_mem_bit_out3 instr_mem_bit_out4 instr_mem_bit_out5 instr_mem_bit_out6 regFlags_out2 regFlags_out1 regFlags_out0 GCLK_instr_dect Imm3 Imm2 Imm1 Imm0 select1 select0 Addr1 Addr0 read write_flags Op_Arith Op_And Op_Xor Cmpl_b1 Cmpl_b0 Cin nextInstrAddr1_1 nextInstrAddr1_0 nextInstrAddr0_1 nextInstrAddr0_0 readNextInstr1 readNextInstr0 
+* XALU_Reg_file ALU_Reg_file Imm3 Imm2 Imm1 Imm0 select1 select0 read Addr0 Addr1 write_flags Op_Arith Op_And Op_Xor Cmpl_b1 Cmpl_b0 Cin GCLK_ALU_Reg_filet regFlags_out0 regFlags_out1 regFlags_out2
+
+* XDUT ALU_Reg_file_final_route Imm3t Imm2t Imm1t Imm0t select1t select0t readt addr0t addr1t write_flagst Op_Aritht Op_Andt Op_Xort Cmpl_b1t Cmpl_b0t Cint GCLKt reg1_out0_pad reg1_out1_pad reg1_out2_pad reg1_out3_pad reg2_out0_pad reg2_out1_pad reg2_out2_pad reg2_out3_pad regFlags_out0 regFlags_out0_pad regFlags_out1 regFlags_out1_pad regFlags_out2 regFlags_out2_pad
+* XDUT Control_Unit_final_route bit7t bit6t bit5t bit4t bit3t bit2t bit1t overflowt zerot negt GCLKt Imm3 Imm2 Imm1 Imm0 select1 select0 read Addr1 Addr0 write_flags Op_Arith Op_And Op_Xor Cmpl_b1 Cmpl_b0 Cin readNextInstr1 readNextInstr0 nextInstrAddr1_1 nextInstrAddr1_0 nextInstrAddr0_1 nextInstrAddr0_0
+* XDUT programmer_instr_memory_final_route program_line4t load4t program_line3t load3t program_line2t load2t program_line1t load1t Addr1_1t Addr1_0t Addr0_1t Addr0_0t read1t read0t read_at_first_addr1t read_at_first_addr0t GCLKt bit_out0 bit_out1 bit_out2 bit_out3 bit_out4 bit_out5 bit_out6
+
+* inputs DC2SFQ and PTL_Transmits
+X1 dcGCLK_instr_dec GCLK_instr_decsfq  LSmitll_DCSFQ
+X2 GCLK_instr_decsfq GCLK_instr_dect LSmitll_PTLTX
+X3 GCLK_instr_dect PAD
+
+X4 dcGCLK_progmer_instr_mem GCLK_progmer_instr_memsfq  LSmitll_DCSFQ
+X5 GCLK_progmer_instr_memsfq GCLK_progmer_instr_memt LSmitll_PTLTX
+X12 GCLK_progmer_instr_memt PAD
+
+X6 dcGCLK_ALU_Reg_file GCLK_ALU_Reg_filesfq  LSmitll_DCSFQ
+X7 GCLK_ALU_Reg_filesfq GCLK_ALU_Reg_filet LSmitll_PTLTX
+X8 GCLK_ALU_Reg_filet PAD
+
+X577 dcprogram_line1 program_line1sfq  LSmitll_DCSFQ
+X578 program_line1sfq program_line1t LSmitll_PTLTX
+X579 program_line1t PAD
+
+X581 dcload1 load1sfq  LSmitll_DCSFQ
+X582 load1sfq load1t LSmitll_PTLTX
+X583 load1t PAD
+
+X585 dcprogram_line2 program_line2sfq  LSmitll_DCSFQ
+X586 program_line2sfq program_line2t LSmitll_PTLTX
+X587 program_line2t PAD
+
+X589 dcload2 load2sfq  LSmitll_DCSFQ
+X590 load2sfq load2t LSmitll_PTLTX
+X591 load2t PAD
+
+X593 dcprogram_line3 program_line3sfq  LSmitll_DCSFQ
+X594 program_line3sfq program_line3t LSmitll_PTLTX
+X595 program_line3t PAD
+
+X597 dcload3 load3sfq  LSmitll_DCSFQ
+X598 load3sfq load3t LSmitll_PTLTX
+X599 load3t PAD
+
+X601 dcload4 load4sfq  LSmitll_DCSFQ
+X602 load4sfq load4t LSmitll_PTLTX
+X603 load4t PAD
+
+X605 dcprogram_line4 program_line4sfq  LSmitll_DCSFQ
+X606 program_line4sfq program_line4t LSmitll_PTLTX
+X607 program_line4t PAD
+
+X633 dcread_at_first_addr1 read_at_first_addr1sfq  LSmitll_DCSFQ
+X634 read_at_first_addr1sfq read_at_first_addr1t LSmitll_PTLTX
+X635 read_at_first_addr1t PAD
+
+X637 dcread_at_first_addr0 read_at_first_addr0sfq  LSmitll_DCSFQ
+X638 read_at_first_addr0sfq read_at_first_addr0t LSmitll_PTLTX
+X639 read_at_first_addr0t PAD
+
+X641 reg1_out1_pad reg1_out1_padr LSmitll_PTLRX
+X642 reg1_out1_padr reg1_out1_paddc LSmitll_SFQDC
+R643 reg1_out1_paddc 0 5
+X644 reg1_out1_pad PAD
+
+X645 reg1_out0_pad reg1_out0_padr LSmitll_PTLRX
+X646 reg1_out0_padr reg1_out0_paddc LSmitll_SFQDC
+R647 reg1_out0_paddc 0 5
+X648 reg1_out0_pad PAD
+
+X649 reg1_out2_pad reg1_out2_padr LSmitll_PTLRX
+X650 reg1_out2_padr reg1_out2_paddc LSmitll_SFQDC
+R651 reg1_out2_paddc 0 5
+X652 reg1_out2_pad PAD
+
+X653 reg1_out3_pad reg1_out3_padr LSmitll_PTLRX
+X654 reg1_out3_padr reg1_out3_paddc LSmitll_SFQDC
+R655 reg1_out3_paddc 0 5
+X656 reg1_out3_pad PAD
+
+X657 reg2_out0_pad reg2_out0_padr LSmitll_PTLRX
+X658 reg2_out0_padr reg2_out0_paddc LSmitll_SFQDC
+R659 reg2_out0_paddc 0 5
+X660 reg2_out0_pad PAD
+
+X661 reg2_out2_pad reg2_out2_padr LSmitll_PTLRX
+X662 reg2_out2_padr reg2_out2_paddc LSmitll_SFQDC
+R663 reg2_out2_paddc 0 5
+X664 reg2_out2_pad PAD
+
+X665 reg2_out1_pad reg2_out1_padr LSmitll_PTLRX
+X666 reg2_out1_padr reg2_out1_paddc LSmitll_SFQDC
+R667 reg2_out1_paddc 0 5
+X668 reg2_out1_pad PAD
+
+X669 reg2_out3_pad reg2_out3_padr LSmitll_PTLRX
+X670 reg2_out3_padr reg2_out3_paddc LSmitll_SFQDC
+R671 reg2_out3_paddc 0 5
+X672 reg2_out3_pad PAD
+
+X673 regFlags_out0_pad regFlags_out0_padr LSmitll_PTLRX
+X674 regFlags_out0_padr regFlags_out0_paddc LSmitll_SFQDC
+R675 regFlags_out0_paddc 0 5
+X676 regFlags_out0_pad PAD
+
+X677 regFlags_out1_pad regFlags_out1_padr LSmitll_PTLRX
+X678 regFlags_out1_padr regFlags_out1_paddc LSmitll_SFQDC
+R679 regFlags_out1_paddc 0 5
+X680 regFlags_out1_pad PAD
+
+X681 regFlags_out2_pad regFlags_out2_padr LSmitll_PTLRX
+X682 regFlags_out2_padr regFlags_out2_paddc LSmitll_SFQDC
+R683 regFlags_out2_paddc 0 5
+X684 regFlags_out2_pad PAD
+
+XDUT CPU_take_4 program_line1t load1t program_line2t load2t program_line3t load3t program_line4t load4t read_at_first_addr1t read_at_first_addr0t GCLK_progmer_instr_memt GCLK_instr_dect GCLK_ALU_Reg_filet reg1_out0_pad reg1_out1_pad reg1_out2_pad reg1_out3_pad reg2_out0_pad reg2_out1_pad reg2_out2_pad reg2_out3_pad regFlags_out0_pad regFlags_out1_pad regFlags_out2_pad
+
+IdcGCLK_progmer_instr_mem 0 dcGCLK_progmer_instr_mem pulse(0u 690u 7.0p 3p 3p 35.0p 70p)
+IdcGCLK_instr_dec 0 dcGCLK_instr_dec pulse(0u 690u 7.0p 3p 3p 35.0p 70p)
+IdcGCLK_ALU_Reg_file 0 dcGCLK_ALU_Reg_file pulse(0u 690u 7.0p 3p 3p 35.0p 70p)
+Idcprogram_line1 0 dcprogram_line1 pwl(0 0 69.0p 0u 72.0p 690u 75.0p 0u 279.0p 0u 282.0p 690u 285.0p 0u 349.0p 0u 352.0p 690u 355.0p 0u 419.0p 0u 422.0p 690u 425.0p 0u 2379.0p 0u 2382.0p 690u 2385.0p 0u 2519.0p 0u 2522.0p 690u 2525.0p 0u 2589.0p 0u 2592.0p 690u 2595.0p 0u 2799.0p 0u 2802.0p 690u 2805.0p 0u)
+Idcload1 0 dcload1 pwl(0 0 69.0p 0u 72.0p 690u 75.0p 0u 2379.0p 0u 2382.0p 690u 2385.0p 0u)
+Idcprogram_line2 0 dcprogram_line2 pwl(0 0 139.0p 0u 142.0p 690u 145.0p 0u 279.0p 0u 282.0p 690u 285.0p 0u 419.0p 0u 422.0p 690u 425.0p 0u 489.0p 0u 492.0p 690u 495.0p 0u 3849.0p 0u 3852.0p 690u 3855.0p 0u 3989.0p 0u 3992.0p 690u 3995.0p 0u 4129.0p 0u 4132.0p 690u 4135.0p 0u 4199.0p 0u 4202.0p 690u 4205.0p 0u)
+Idcload2 0 dcload2 pwl(0 0 69.0p 0u 72.0p 690u 75.0p 0u 3779.0p 0u 3782.0p 690u 3785.0p 0u)
+Idcprogram_line3 0 dcprogram_line3 pwl(0 0 279.0p 0u 282.0p 690u 285.0p 0u 5389.0p 0u 5392.0p 690u 5395.0p 0u)
+Idcload3 0 dcload3 pwl(0 0 69.0p 0u 72.0p 690u 75.0p 0u 5179.0p 0u 5182.0p 690u 5185.0p 0u)
+Idcprogram_line4 0 dcprogram_line4 pwl(0 0 69.0p 0u 72.0p 690u 75.0p 0u 209.0p 0u 212.0p 690u 215.0p 0u 349.0p 0u 352.0p 690u 355.0p 0u 489.0p 0u 492.0p 690u 495.0p 0u 6579.0p 0u 6582.0p 690u 6585.0p 0u 6719.0p 0u 6722.0p 690u 6725.0p 0u 6859.0p 0u 6862.0p 690u 6865.0p 0u 6929.0p 0u 6932.0p 690u 6935.0p 0u)
+Idcload4 0 dcload4 pwl(0 0 69.0p 0u 72.0p 690u 75.0p 0u 6579.0p 0u 6582.0p 690u 6585.0p 0u)
+Idcread_at_first_addr0 0 dcread_at_first_addr0 pwl(0 0 839.0p 0u 842.0p 690u 845.0p 0u)
+Idcread_at_first_addr1 0 dcread_at_first_addr1 pwl(0 0 839.0p 0u 842.0p 690u 845.0p 0u)
+
+.tran 0.1p 13000p 0
+*.tran 0.1p 500p 0
+
+*.save v(GCLK_instr_dect) p(GCLK_instr_dect)
+*.save v(GCLK_regFilet) p(GCLK_regFilet)
+*.save v(GCLK_ALUt) p(GCLK_ALUt)
+*.file ./instruction_mem_reg1.csv
+*.save tran v(GCLK_progmer_instr_memt) v(X217-LSmitll_NDROT-OUT-X273-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X219-LSmitll_NDROT-OUT-X277-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X221-LSmitll_NDROT-OUT-X281-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X223-LSmitll_NDROT-OUT-X285-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X225-LSmitll_NDROT-OUT-X289-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X227-LSmitll_NDROT-OUT-X293-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X229-LSmitll_NDROT-OUT-X297-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT)
+*.save tran v(GCLK_progmer_instr_memt) v(X217-LSmitll_NDROT-OUT-X273-LSmitll_AND2T-IN) v(X219-LSmitll_NDROT-OUT-X277-LSmitll_AND2T-IN) v(X221-LSmitll_NDROT-OUT-X281-LSmitll_AND2T-IN) v(X223-LSmitll_NDROT-OUT-X285-LSmitll_AND2T-IN) v(X225-LSmitll_NDROT-OUT-X289-LSmitll_AND2T-IN) v(X229-LSmitll_NDROT-OUT-X297-LSmitll_AND2T-IN) v(X229-LSmitll_NDROT-OUT-X297-LSmitll_AND2T-IN)  
+
+*.file ./instruction_mem_reg2.csv
+*.save tran v(GCLK_progmer_instr_memt) v(X231-LSmitll_NDROT-OUT-X274-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X233-LSmitll_NDROT-OUT-X278-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X235-LSmitll_NDROT-OUT-X282-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X237-LSmitll_NDROT-OUT-X286-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X239-LSmitll_NDROT-OUT-X290-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X241-LSmitll_NDROT-OUT-X294-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X243-LSmitll_NDROT-OUT-X298-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) 
+
+*.file ./instruction_mem_reg3.csv
+*.save tran v(GCLK_progmer_instr_memt) v(X245-LSmitll_NDROT-OUT-X275-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X247-LSmitll_NDROT-OUT-X279-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X249-LSmitll_NDROT-OUT-X283-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X251-LSmitll_NDROT-OUT-X287-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X253-LSmitll_NDROT-OUT-X291-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X255-LSmitll_NDROT-OUT-X295-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X257-LSmitll_NDROT-OUT-X299-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) 
+
+*.file ./instruction_mem_reg4.csv
+*.save tran v(GCLK_progmer_instr_memt) v(X259-LSmitll_NDROT-OUT-X276-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X261-LSmitll_NDROT-OUT-X280-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X263-LSmitll_NDROT-OUT-X284-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X265-LSmitll_NDROT-OUT-X288-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X267-LSmitll_NDROT-OUT-X292-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X269-LSmitll_NDROT-OUT-X296-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) v(X271-LSmitll_NDROT-OUT-X300-LSmitll_AND2T-IN.Xprogrammer_instr_memory.XDUT) 
+
+*.file ./instruction_mem_addressing.csv
+*.save tran v(GCLK_progmer_instr_memt) v(Addr1_0.Xprogrammer_instr_memory.XDUT) v(Addr1_1.Xprogrammer_instr_memory.XDUT) v(Addr0_1.Xprogrammer_instr_memory.XDUT) v(Addr0_0.Xprogrammer_instr_memory.XDUT) v(read0.Xprogrammer_instr_memory.XDUT) v(read1.Xprogrammer_instr_memory.XDUT) v(read_at_first_addr0.Xprogrammer_instr_memory.XDUT) v(read_at_first_addr1.Xprogrammer_instr_memory.XDUT)
+*.save tran v(GCLK_progmer_instr_memt)  v(Addr0_1.Xprogrammer_instr_memory.XDUT) v(Addr1_0.Xprogrammer_instr_memory.XDUT) v(read0.Xprogrammer_instr_memory.XDUT) v(read_at_first_addr0.Xprogrammer_instr_memory.XDUT)
+
+*.file ./instruction_mem_outputs.csv
+*.save tran  v(GCLK_progmer_instr_memt) v(bit_out0.XDUT) v(bit_out1.XDUT) v(bit_out2.XDUT) v(bit_out3.XDUT) v(bit_out4.XDUT) v(bit_out5.XDUT) v(bit_out6.XDUT)
+
+
+*.file ./instr_dec_inputs_route.csv
+*.save tran  v(GCLK.XContol_Unit.XDUT) v(bit7sfq) v(bit6sfq) v(bit5sfq) v(bit4sfq) v(bit3sfq) v(bit2sfq) v(bit1sfq) 
+*.save tran  v(GCLK_instr_dect) v(bit7sfq) v(bit7.XContol_Unit.XDUT) v(bit6sfq) v(bit6.XContol_Unit.XDUT) v(bit5sfq) v(bit5.XContol_Unit.XDUT) v(bit4sfq) v(bit4.XContol_Unit.XDUT) v(bit3sfq) v(bit3.XContol_Unit.XDUT) v(bit2sfq) v(bit2.XContol_Unit.XDUT) v(bit1sfq) v(bit1.XContol_Unit.XDUT)
+*.save tran  v(GCLK_instr_dect) v(bit7.XContol_Unit.XDUT) v(bit6.XContol_Unit.XDUT) v(bit5.XContol_Unit.XDUT) v(bit4.XContol_Unit.XDUT) v(bit3.XContol_Unit.XDUT) v(bit2.XContol_Unit.XDUT) v(bit1.XContol_Unit.XDUT) v(overflow.XContol_Unit.XDUT) v(zero.XContol_Unit.XDUT) v(neg.XContol_Unit.XDUT) 
+
+
+*.file ./mux_bank_route.csv
+*.save tran v(GCLK_ALU_Reg_filet) v(Imm3.XALU_Reg_file.XDUT) v(Imm2.XALU_Reg_file.XDUT) v(Imm1.XALU_Reg_file.XDUT) v(Imm0.XALU_Reg_file.XDUT)
+*.save tran v(GCLK_ALU_Reg_filet) v(select1.XALU_Reg_file.XDUT) v(select0.XALU_Reg_file.XDUT) 
+
+*.file ./Reg_file_cpu_route.csv
+*.save tran v(GCLKt) v(Addr1t) v(Addr0t) v(readt) v(write_flagst)
+*.save tran v(GCLK_ALU_Reg_filet) v(Addr1.XALU_Reg_file.XDUT) v(Addr0.XALU_Reg_file.XDUT) v(read.XALU_Reg_file.XDUT) v(write_flags.XALU_Reg_file.XDUT)
+*.save tran v(GCLK_instr_decsfq) v(Addr1.XALU_Reg_file.XDUT) v(Addr0.XALU_Reg_file.XDUT) v(read.XALU_Reg_file.XDUT) v(write_flags.XALU_Reg_file.XDUT)
+
+*.file ./ALU_controls_cpu_route.csv
+*.save tran v(GCLKt) v(Op_Aritht) v(Op_Andt) v(Op_Xort) v(Cmpl_b1t) v(Cmpl_b0t) v(Cint)
+*.save tran v(GCLK_ALU_Reg_filet) v(Op_Arith.XALU_Reg_file.XDUT) v(Op_And.XALU_Reg_file.XDUT) v(Op_Xor.XALU_Reg_file.XDUT) v(Cmpl_b1.XALU_Reg_file.XDUT) v(Cmpl_b0.XALU_Reg_file.XDUT) v(Cin.XALU_Reg_file.XDUT)
+*.save tran v(GCLK_instr_decsfq) v(Op_Arith.XALU_Reg_file.XDUT) v(Op_And.XALU_Reg_file.XDUT) v(Op_Xor.XALU_Reg_file.XDUT) v(Cmpl_b1.XALU_Reg_file.XDUT) v(Cmpl_b0.XALU_Reg_file.XDUT) v(Cin.XALU_Reg_file.XDUT)
+
+.file ./Reg1_rosetta1_4b_routed.csv
+*.save tran v(GCLK_ALU_Reg_filet) v(reg1_out0_pad) v(reg1_out1_pad)  v(reg1_out2_pad) v(reg1_out3_pad) 
+.save tran v(GCLK_instr_decsfq) v(reg1_out0_pad) v(reg1_out1_pad)  v(reg1_out2_pad) v(reg1_out3_pad) 
+
+.file ./Reg2_rosetta1_4b_routed.csv
+*.save tran v(GCLK_ALU_Reg_filet) v(reg2_out0_pad) v(reg2_out1_pad)  v(reg2_out2_pad) v(reg2_out3_pad) 
+.save tran v(GCLK_instr_decsfq) v(reg2_out0_pad) v(reg2_out1_pad)  v(reg2_out2_pad) v(reg2_out3_pad) 
+
+.file ./Reg_flags_rosetta1_4b_routed.csv
+*.save tran v(X2-LSmitll_DFFT-OUT-X59-LSmitll_AND2T-INt)
+*.save tran v(GCLK_ALU_Reg_filet) v(regFlags_out0_pad) v(regFlags_out1_pad) v(regFlags_out2_pad)
+*.print v(GCLK_ALU_Reg_filet) v(regFlags_out0_pad) v(regFlags_out1_pad) v(regFlags_out2_pad)
+*.save v(GCLK_instr_decsfq)
+.save tran v(GCLK_instr_decsfq) v(regFlags_out0_pad) v(regFlags_out1_pad) v(regFlags_out2_pad)

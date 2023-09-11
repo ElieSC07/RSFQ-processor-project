@@ -1,0 +1,1079 @@
+.include /libraries/without_PTL_Tx_and_Rx/connecting_cells.cir
+.include /libraries/without_PTL_Tx_and_Rx/gates.cir
+.include /libraries/without_PTL_Tx_and_Rx/splitters.cir
+
+.subckt CPU program_line1 load1 program_line2 load2 program_line3 load3 program_line4 load4 read_at_first_addr1 read_at_first_addr0 clk reg1_out0_pad reg1_out1_pad reg1_out2_pad reg1_out3_pad reg2_out0_pad reg2_out1_pad reg2_out2_pad reg2_out3_pad regFlags_out0_pad regFlags_out1_pad regFlags_out2_pad
+XSPLITCLK 1_to_848_split clk clk0 clk1 clk2 clk3 clk4 clk5 clk6 clk7 clk8 clk9 clk10 clk11 clk12 clk13 clk14 clk15 clk16 clk17 clk18 clk19 clk20 clk21 clk22 clk23 clk24 clk25 clk26 clk27 clk28 clk29 clk30 clk31 clk32 clk33 clk34 clk35 clk36 clk37 clk38 clk39 clk40 clk41 clk42 clk43 clk44 clk45 clk46 clk47 clk48 clk49 clk50 clk51 clk52 clk53 clk54 clk55 clk56 clk57 clk58 clk59 clk60 clk61 clk62 clk63 clk64 clk65 clk66 clk67 clk68 clk69 clk70 clk71 clk72 clk73 clk74 clk75 clk76 clk77 clk78 clk79 clk80 clk81 clk82 clk83 clk84 clk85 clk86 clk87 clk88 clk89 clk90 clk91 clk92 clk93 clk94 clk95 clk96 clk97 clk98 clk99 clk100 clk101 clk102 clk103 clk104 clk105 clk106 clk107 clk108 clk109 clk110 clk111 clk112 clk113 clk114 clk115 clk116 clk117 clk118 clk119 clk120 clk121 clk122 clk123 clk124 clk125 clk126 clk127 clk128 clk129 clk130 clk131 clk132 clk133 clk134 clk135 clk136 clk137 clk138 clk139 clk140 clk141 clk142 clk143 clk144 clk145 clk146 clk147 clk148 clk149 clk150 clk151 clk152 clk153 clk154 clk155 clk156 clk157 clk158 clk159 clk160 clk161 clk162 clk163 clk164 clk165 clk166 clk167 clk168 clk169 clk170 clk171 clk172 clk173 clk174 clk175 clk176 clk177 clk178 clk179 clk180 clk181 clk182 clk183 clk184 clk185 clk186 clk187 clk188 clk189 clk190 clk191 clk192 clk193 clk194 clk195 clk196 clk197 clk198 clk199 clk200 clk201 clk202 clk203 clk204 clk205 clk206 clk207 clk208 clk209 clk210 clk211 clk212 clk213 clk214 clk215 clk216 clk217 clk218 clk219 clk220 clk221 clk222 clk223 clk224 clk225 clk226 clk227 clk228 clk229 clk230 clk231 clk232 clk233 clk234 clk235 clk236 clk237 clk238 clk239 clk240 clk241 clk242 clk243 clk244 clk245 clk246 clk247 clk248 clk249 clk250 clk251 clk252 clk253 clk254 clk255 clk256 clk257 clk258 clk259 clk260 clk261 clk262 clk263 clk264 clk265 clk266 clk267 clk268 clk269 clk270 clk271 clk272 clk273 clk274 clk275 clk276 clk277 clk278 clk279 clk280 clk281 clk282 clk283 clk284 clk285 clk286 clk287 clk288 clk289 clk290 clk291 clk292 clk293 clk294 clk295 clk296 clk297 clk298 clk299 clk300 clk301 clk302 clk303 clk304 clk305 clk306 clk307 clk308 clk309 clk310 clk311 clk312 clk313 clk314 clk315 clk316 clk317 clk318 clk319 clk320 clk321 clk322 clk323 clk324 clk325 clk326 clk327 clk328 clk329 clk330 clk331 clk332 clk333 clk334 clk335 clk336 clk337 clk338 clk339 clk340 clk341 clk342 clk343 clk344 clk345 clk346 clk347 clk348 clk349 clk350 clk351 clk352 clk353 clk354 clk355 clk356 clk357 clk358 clk359 clk360 clk361 clk362 clk363 clk364 clk365 clk366 clk367 clk368 clk369 clk370 clk371 clk372 clk373 clk374 clk375 clk376 clk377 clk378 clk379 clk380 clk381 clk382 clk383 clk384 clk385 clk386 clk387 clk388 clk389 clk390 clk391 clk392 clk393 clk394 clk395 clk396 clk397 clk398 clk399 clk400 clk401 clk402 clk403 clk404 clk405 clk406 clk407 clk408 clk409 clk410 clk411 clk412 clk413 clk414 clk415 clk416 clk417 clk418 clk419 clk420 clk421 clk422 clk423 clk424 clk425 clk426 clk427 clk428 clk429 clk430 clk431 clk432 clk433 clk434 clk435 clk436 clk437 clk438 clk439 clk440 clk441 clk442 clk443 clk444 clk445 clk446 clk447 clk448 clk449 clk450 clk451 clk452 clk453 clk454 clk455 clk456 clk457 clk458 clk459 clk460 clk461 clk462 clk463 clk464 clk465 clk466 clk467 clk468 clk469 clk470 clk471 clk472 clk473 clk474 clk475 clk476 clk477 clk478 clk479 clk480 clk481 clk482 clk483 clk484 clk485 clk486 clk487 clk488 clk489 clk490 clk491 clk492 clk493 clk494 clk495 clk496 clk497 clk498 clk499 clk500 clk501 clk502 clk503 clk504 clk505 clk506 clk507 clk508 clk509 clk510 clk511 clk512 clk513 clk514 clk515 clk516 clk517 clk518 clk519 clk520 clk521 clk522 clk523 clk524 clk525 clk526 clk527 clk528 clk529 clk530 clk531 clk532 clk533 clk534 clk535 clk536 clk537 clk538 clk539 clk540 clk541 clk542 clk543 clk544 clk545 clk546 clk547 clk548 clk549 clk550 clk551 clk552 clk553 clk554 clk555 clk556 clk557 clk558 clk559 clk560 clk561 clk562 clk563 clk564 clk565 clk566 clk567 clk568 clk569 clk570 clk571 clk572 clk573 clk574 clk575 clk576 clk577 clk578 clk579 clk580 clk581 clk582 clk583 clk584 clk585 clk586 clk587 clk588 clk589 clk590 clk591 clk592 clk593 clk594 clk595 clk596 clk597 clk598 clk599 clk600 clk601 clk602 clk603 clk604 clk605 clk606 clk607 clk608 clk609 clk610 clk611 clk612 clk613 clk614 clk615 clk616 clk617 clk618 clk619 clk620 clk621 clk622 clk623 clk624 clk625 clk626 clk627 clk628 clk629 clk630 clk631 clk632 clk633 clk634 clk635 clk636 clk637 clk638 clk639 clk640 clk641 clk642 clk643 clk644 clk645 clk646 clk647 clk648 clk649 clk650 clk651 clk652 clk653 clk654 clk655 clk656 clk657 clk658 clk659 clk660 clk661 clk662 clk663 clk664 clk665 clk666 clk667 clk668 clk669 clk670 clk671 clk672 clk673 clk674 clk675 clk676 clk677 clk678 clk679 clk680 clk681 clk682 clk683 clk684 clk685 clk686 clk687 clk688 clk689 clk690 clk691 clk692 clk693 clk694 clk695 clk696 clk697 clk698 clk699 clk700 clk701 clk702 clk703 clk704 clk705 clk706 clk707 clk708 clk709 clk710 clk711 clk712 clk713 clk714 clk715 clk716 clk717 clk718 clk719 clk720 clk721 clk722 clk723 clk724 clk725 clk726 clk727 clk728 clk729 clk730 clk731 clk732 clk733 clk734 clk735 clk736 clk737 clk738 clk739 clk740 clk741 clk742 clk743 clk744 clk745 clk746 clk747 clk748 clk749 clk750 clk751 clk752 clk753 clk754 clk755 clk756 clk757 clk758 clk759 clk760 clk761 clk762 clk763 clk764 clk765 clk766 clk767 clk768 clk769 clk770 clk771 clk772 clk773 clk774 clk775 clk776 clk777 clk778 clk779 clk780 clk781 clk782 clk783 clk784 clk785 clk786 clk787 clk788 clk789 clk790 clk791 clk792 clk793 clk794 clk795 clk796 clk797 clk798 clk799 clk800 clk801 clk802 clk803 clk804 clk805 clk806 clk807 clk808 clk809 clk810 clk811 clk812 clk813 clk814 clk815 clk816 clk817 clk818 clk819 clk820 clk821 clk822 clk823 clk824 clk825 clk826 clk827 clk828 clk829 clk830 clk831 clk832 clk833 clk834 clk835 clk836 clk837 clk838 clk839 clk840 clk841 clk842 clk843 clk844 clk845 clk846 clk847
+
+XU1 LSmitll_SPLIT load1 write_to_Reg1_bit0 N229 
+XU2 LSmitll_SPLIT program_line1 reg1_data0 N206 
+XU3 LSmitll_SPLIT load2 write_to_Reg2_bit0 N231 
+XU4 LSmitll_SPLIT program_line2 reg2_data0 N207 
+XU5 LSmitll_SPLIT load3 write_to_Reg3_bit0 N233 
+XU6 LSmitll_SPLIT program_line3 reg3_data0 N208 
+XU7 LSmitll_SPLIT load4 write_to_Reg4_bit0 N235 
+XU8 LSmitll_SPLIT program_line4 reg4_data0 N209 
+XU9 LSmitll_SPLIT nextInstrAddr1_1 N211 N240 
+XU10 LSmitll_SPLIT nextInstrAddr0_0 N321 N331 
+XU11 LSmitll_SPLIT read_at_first_addr0 N274 N288 
+XU12 LSmitll_SPLIT readNextInstr0 N264 N287 
+XU13 LSmitll_SPLIT nextInstrAddr1_0 N403 N415 
+XU14 LSmitll_SPLIT nextInstrAddr0_1 N505 N522 
+XU15 LSmitll_SPLIT read_at_first_addr1 N454 N468 
+XU16 LSmitll_SPLIT readNextInstr1 N445 N467 
+XU17 LSmitll_DFF N206 clk0 P001 
+XU18 LSmitll_DFF N229 clk1 P002 
+XU19 LSmitll_DFF P002 clk2 N230 
+XU20 LSmitll_DFF N207 clk3 P003 
+XU21 LSmitll_DFF N231 clk4 P004 
+XU22 LSmitll_DFF P004 clk5 N232 
+XU23 LSmitll_DFF N208 clk6 P005 
+XU24 LSmitll_DFF N233 clk7 P006 
+XU25 LSmitll_DFF P006 clk8 N234 
+XU26 LSmitll_DFF N209 clk9 P007 
+XU27 LSmitll_DFF N235 clk10 P008 
+XU28 LSmitll_DFF P008 clk11 N236 
+XU29 LSmitll_DFF N211 clk12 N212 
+XU30 LSmitll_DFF N321 clk13 N322 
+XU31 LSmitll_DFF N403 clk14 N404 
+XU32 LSmitll_DFF N505 clk15 N506 
+XU33 LSmitll_OR2 N264 N274 clk16 N269 
+XU34 LSmitll_OR2 N288 N287 clk17 N298 
+XU35 LSmitll_OR2 N445 N454 clk18 N452 
+XU36 LSmitll_OR2 N468 N467 clk19 N478 
+XU37 LSmitll_NOT N240 clk20 N246 
+XU38 LSmitll_NOT N331 clk21 N335 
+XU39 LSmitll_NOT N415 clk22 N420 
+XU40 LSmitll_NOT N522 clk23 N534 
+XU41 LSmitll_SPLIT P001 reg1_data1 N291 
+XU42 LSmitll_SPLIT N230 write_to_Reg1_bit1 N281 
+XU43 LSmitll_SPLIT P003 reg2_data1 N292 
+XU44 LSmitll_SPLIT N232 write_to_Reg2_bit1 N282 
+XU45 LSmitll_SPLIT P005 reg3_data1 N293 
+XU46 LSmitll_SPLIT N234 write_to_Reg3_bit1 N283 
+XU47 LSmitll_SPLIT P007 reg4_data1 N294 
+XU48 LSmitll_SPLIT N236 write_to_Reg4_bit1 N284 
+XU49 LSmitll_SPLIT N269 N195 N255 
+XU50 LSmitll_SPLIT N298 N295 N303 
+XU51 LSmitll_SPLIT N452 N393 N437 
+XU52 LSmitll_SPLIT N478 N473 N483 
+XU53 LSmitll_DFF N291 clk24 P009 
+XU54 LSmitll_DFF N281 clk25 P010 
+XU55 LSmitll_DFF P010 clk26 N307 
+XU56 LSmitll_DFF N292 clk27 P011 
+XU57 LSmitll_DFF N282 clk28 P012 
+XU58 LSmitll_DFF P012 clk29 N308 
+XU59 LSmitll_DFF N293 clk30 P013 
+XU60 LSmitll_DFF N283 clk31 P014 
+XU61 LSmitll_DFF P014 clk32 N309 
+XU62 LSmitll_DFF N294 clk33 P015 
+XU63 LSmitll_DFF N284 clk34 P016 
+XU64 LSmitll_DFF P016 clk35 N310 
+XU65 LSmitll_AND2 N195 N212 clk36 N203 
+XU66 LSmitll_AND2 N246 N255 clk37 N250 
+XU67 LSmitll_AND2 N295 N322 clk38 N319 
+XU68 LSmitll_AND2 N335 N303 clk39 N340 
+XU69 LSmitll_AND2 N393 N404 clk40 N399 
+XU70 LSmitll_AND2 N420 N437 clk41 N426 
+XU71 LSmitll_AND2 N473 N506 clk42 N501 
+XU72 LSmitll_AND2 N534 N483 clk43 N541 
+XU73 LSmitll_SPLIT P009 reg1_data2 N369 
+XU74 LSmitll_SPLIT N307 write_to_Reg1_bit2 N347 
+XU75 LSmitll_SPLIT P011 reg2_data2 N370 
+XU76 LSmitll_SPLIT N308 write_to_Reg2_bit2 N348 
+XU77 LSmitll_SPLIT P013 reg3_data2 N371 
+XU78 LSmitll_SPLIT N309 write_to_Reg3_bit2 N349 
+XU79 LSmitll_SPLIT P015 reg4_data2 N372 
+XU80 LSmitll_SPLIT N310 write_to_Reg4_bit2 N350 
+XU81 LSmitll_SPLIT N203 N196 N213 
+XU82 LSmitll_SPLIT N250 N247 N256 
+XU83 LSmitll_SPLIT N319 N222 N296 
+XU84 LSmitll_SPLIT N340 N263 N351 
+XU85 LSmitll_SPLIT N399 N394 N405 
+XU86 LSmitll_SPLIT N426 N421 N438 
+XU87 LSmitll_SPLIT N501 N412 N474 
+XU88 LSmitll_SPLIT N541 N444 N550 
+XU89 LSmitll_DFF N369 clk44 P017 
+XU90 LSmitll_DFF N347 clk45 P018 
+XU91 LSmitll_DFF P018 clk46 N380 
+XU92 LSmitll_DFF N370 clk47 P019 
+XU93 LSmitll_DFF N348 clk48 P020 
+XU94 LSmitll_DFF P020 clk49 N381 
+XU95 LSmitll_DFF N371 clk50 P021 
+XU96 LSmitll_DFF N349 clk51 P022 
+XU97 LSmitll_DFF P022 clk52 N382 
+XU98 LSmitll_DFF N372 clk53 P023 
+XU99 LSmitll_DFF N350 clk54 P024 
+XU100 LSmitll_DFF P024 clk55 N383 
+XU101 LSmitll_AND2 N213 N222 clk56 N215 
+XU102 LSmitll_AND2 N263 N196 clk57 N265 
+XU103 LSmitll_AND2 N296 N247 clk58 N299 
+XU104 LSmitll_AND2 N256 N351 clk59 N341 
+XU105 LSmitll_AND2 N405 N412 clk60 N410 
+XU106 LSmitll_AND2 N444 N394 clk61 N446 
+XU107 LSmitll_AND2 N474 N421 clk62 N479 
+XU108 LSmitll_AND2 N438 N550 clk63 N542 
+XU109 LSmitll_SPLIT P017 reg1_data3 N448 
+XU110 LSmitll_SPLIT N380 write_to_Reg1_bit3 N433 
+XU111 LSmitll_SPLIT P019 reg2_data3 N449 
+XU112 LSmitll_SPLIT N381 write_to_Reg2_bit3 N434 
+XU113 LSmitll_SPLIT P021 reg3_data3 N450 
+XU114 LSmitll_SPLIT N382 write_to_Reg3_bit3 N435 
+XU115 LSmitll_SPLIT P023 reg4_data3 N451 
+XU116 LSmitll_SPLIT N383 write_to_Reg4_bit3 N436 
+XU117 LSmitll_SPLIT N215 N197 N223 
+XU118 LSmitll_SPLIT N265 N257 read_from_reg3_2 
+XU119 LSmitll_SPLIT N299 N289 N304 
+XU120 LSmitll_SPLIT N341 N332 read_from_reg1_2 
+XU121 LSmitll_SPLIT N410 N395 read_from_reg4_6 
+XU122 LSmitll_SPLIT N446 N439 N453 
+XU123 LSmitll_SPLIT N479 N470 read_from_reg2_6 
+XU124 LSmitll_SPLIT N542 N523 N551 
+XU125 LSmitll_SPLIT N197 read_from_reg4_0 read_from_reg4_1 
+XU126 LSmitll_SPLIT N223 read_from_reg4_2 read_from_reg4_3 
+XU127 LSmitll_SPLIT N257 read_from_reg3_0 read_from_reg3_1 
+XU128 LSmitll_SPLIT N289 read_from_reg2_0 read_from_reg2_1 
+XU129 LSmitll_SPLIT N304 read_from_reg2_2 read_from_reg2_3 
+XU130 LSmitll_SPLIT N332 read_from_reg1_0 read_from_reg1_1 
+XU131 LSmitll_SPLIT N395 read_from_reg4_4 read_from_reg4_5 
+XU132 LSmitll_SPLIT N439 read_from_reg3_3 read_from_reg3_4 
+XU133 LSmitll_SPLIT N453 read_from_reg3_5 read_from_reg3_6 
+XU134 LSmitll_SPLIT N470 read_from_reg2_4 read_from_reg2_5 
+XU135 LSmitll_SPLIT N523 read_from_reg1_3 read_from_reg1_4 
+XU136 LSmitll_SPLIT N551 read_from_reg1_5 read_from_reg1_6 
+XU137 LSmitll_DFF N448 clk64 P025 
+XU138 LSmitll_DFF N433 clk65 P026 
+XU139 LSmitll_DFF P026 clk66 N455 
+XU140 LSmitll_DFF N449 clk67 P027 
+XU141 LSmitll_DFF N434 clk68 P028 
+XU142 LSmitll_DFF P028 clk69 N456 
+XU143 LSmitll_DFF N450 clk70 P029 
+XU144 LSmitll_DFF N435 clk71 P030 
+XU145 LSmitll_DFF P030 clk72 N457 
+XU146 LSmitll_DFF N451 clk73 P031 
+XU147 LSmitll_DFF N436 clk74 P032 
+XU148 LSmitll_DFF P032 clk75 N458 
+XU149 LSmitll_SPLIT P025 reg1_data4 N527 
+XU150 LSmitll_SPLIT N455 write_to_Reg1_bit4 N514 
+XU151 LSmitll_SPLIT P027 reg2_data4 N528 
+XU152 LSmitll_SPLIT N456 write_to_Reg2_bit4 N515 
+XU153 LSmitll_SPLIT P029 reg3_data4 N529 
+XU154 LSmitll_SPLIT N457 write_to_Reg3_bit4 N516 
+XU155 LSmitll_SPLIT P031 reg4_data4 N530 
+XU156 LSmitll_SPLIT N458 write_to_Reg4_bit4 N517 
+XU157 LSmitll_DFF N527 clk76 P033 
+XU158 LSmitll_DFF N514 clk77 P034 
+XU159 LSmitll_DFF P034 clk78 N546 
+XU160 LSmitll_DFF N528 clk79 P035 
+XU161 LSmitll_DFF N515 clk80 P036 
+XU162 LSmitll_DFF P036 clk81 N547 
+XU163 LSmitll_DFF N529 clk82 P037 
+XU164 LSmitll_DFF N516 clk83 P038 
+XU165 LSmitll_DFF P038 clk84 N548 
+XU166 LSmitll_DFF N530 clk85 P039 
+XU167 LSmitll_DFF N517 clk86 P040 
+XU168 LSmitll_DFF P040 clk87 N549 
+XU169 LSmitll_SPLIT P033 reg1_data5 N588 
+XU170 LSmitll_SPLIT N546 write_to_Reg1_bit5 N574 
+XU171 LSmitll_SPLIT P035 reg2_data5 N589 
+XU172 LSmitll_SPLIT N547 write_to_Reg2_bit5 N575 
+XU173 LSmitll_SPLIT P037 reg3_data5 N590 
+XU174 LSmitll_SPLIT N548 write_to_Reg3_bit5 N576 
+XU175 LSmitll_SPLIT P039 reg4_data5 N591 
+XU176 LSmitll_SPLIT N549 write_to_Reg4_bit5 N577 
+XU177 LSmitll_DFF N588 clk88 reg1_data6 
+XU178 LSmitll_DFF N574 clk89 P041 
+XU179 LSmitll_DFF P041 clk90 write_to_Reg1_bit6 
+XU180 LSmitll_DFF N589 clk91 reg2_data6 
+XU181 LSmitll_DFF N575 clk92 P042 
+XU182 LSmitll_DFF P042 clk93 write_to_Reg2_bit6 
+XU183 LSmitll_DFF N590 clk94 reg3_data6 
+XU184 LSmitll_DFF N576 clk95 P043 
+XU185 LSmitll_DFF P043 clk96 write_to_Reg3_bit6 
+XU186 LSmitll_DFF N591 clk97 reg4_data6 
+XU187 LSmitll_DFF N577 clk98 P044 
+XU188 LSmitll_DFF P044 clk99 write_to_Reg4_bit6 
+XU189 LSmitll_SPLIT write_to_Reg1_bit0 P045 N051 
+XU190 LSmitll_SPLIT write_to_Reg1_bit1 P046 N072 
+XU191 LSmitll_SPLIT write_to_Reg1_bit2 P047 N073 
+XU192 LSmitll_SPLIT write_to_Reg1_bit3 P048 N095 
+XU193 LSmitll_SPLIT write_to_Reg1_bit4 P049 N106 
+XU194 LSmitll_SPLIT write_to_Reg1_bit5 P050 N133 
+XU195 LSmitll_SPLIT write_to_Reg1_bit6 P051 N148 
+XU196 LSmitll_SPLIT write_to_Reg2_bit0 P052 N179 
+XU197 LSmitll_SPLIT write_to_Reg2_bit1 P053 N188 
+XU198 LSmitll_SPLIT write_to_Reg2_bit2 P054 N210 
+XU199 LSmitll_SPLIT write_to_Reg2_bit3 P055 N254 
+XU200 LSmitll_SPLIT write_to_Reg2_bit4 P056 N286 
+XU201 LSmitll_SPLIT write_to_Reg2_bit5 P057 N317 
+XU202 LSmitll_SPLIT write_to_Reg2_bit6 P058 N334 
+XU203 LSmitll_SPLIT write_to_Reg3_bit0 P059 N409 
+XU204 LSmitll_SPLIT write_to_Reg3_bit1 P060 N442 
+XU205 LSmitll_SPLIT write_to_Reg3_bit2 P061 N466 
+XU206 LSmitll_SPLIT write_to_Reg3_bit3 P062 N500 
+XU207 LSmitll_SPLIT write_to_Reg3_bit4 P063 N540 
+XU208 LSmitll_SPLIT write_to_Reg3_bit5 P064 N558 
+XU209 LSmitll_SPLIT write_to_Reg3_bit6 P065 N586 
+XU210 LSmitll_SPLIT write_to_Reg4_bit0 P066 N613 
+XU211 LSmitll_SPLIT write_to_Reg4_bit1 P067 N640 
+XU212 LSmitll_SPLIT write_to_Reg4_bit2 P068 N662 
+XU213 LSmitll_SPLIT write_to_Reg4_bit3 P069 N667 
+XU214 LSmitll_SPLIT write_to_Reg4_bit4 P070 N671 
+XU215 LSmitll_SPLIT write_to_Reg4_bit5 P071 N682 
+XU216 LSmitll_SPLIT write_to_Reg4_bit6 P072 N684 
+XU217 LSmitll_NDRO P073 N051 clk100 reg1_0ut0 
+XU218 LSmitll_AND2 reg1_data0 P045 clk101 P073 
+XU219 LSmitll_NDRO P074 N072 clk102 reg1_0ut1 
+XU220 LSmitll_AND2 reg1_data1 P046 clk103 P074 
+XU221 LSmitll_NDRO P075 N073 clk104 reg1_0ut2 
+XU222 LSmitll_AND2 reg1_data2 P047 clk105 P075 
+XU223 LSmitll_NDRO P076 N095 clk106 reg1_0ut3 
+XU224 LSmitll_AND2 reg1_data3 P048 clk107 P076 
+XU225 LSmitll_NDRO P077 N106 clk108 reg1_0ut4 
+XU226 LSmitll_AND2 reg1_data4 P049 clk109 P077 
+XU227 LSmitll_NDRO P078 N133 clk110 reg1_0ut5 
+XU228 LSmitll_AND2 reg1_data5 P050 clk111 P078 
+XU229 LSmitll_NDRO P079 N148 clk112 reg1_0ut6 
+XU230 LSmitll_AND2 reg1_data6 P051 clk113 P079 
+XU231 LSmitll_NDRO P080 N179 clk114 reg2_0ut0 
+XU232 LSmitll_AND2 reg2_data0 P052 clk115 P080 
+XU233 LSmitll_NDRO P081 N188 clk116 reg2_0ut1 
+XU234 LSmitll_AND2 reg2_data1 P053 clk117 P081 
+XU235 LSmitll_NDRO P082 N210 clk118 reg2_0ut2 
+XU236 LSmitll_AND2 reg2_data2 P054 clk119 P082 
+XU237 LSmitll_NDRO P083 N254 clk120 reg2_0ut3 
+XU238 LSmitll_AND2 reg2_data3 P055 clk121 P083 
+XU239 LSmitll_NDRO P084 N286 clk122 reg2_0ut4 
+XU240 LSmitll_AND2 reg2_data4 P056 clk123 P084 
+XU241 LSmitll_NDRO P085 N317 clk124 reg2_0ut5 
+XU242 LSmitll_AND2 reg2_data5 P057 clk125 P085 
+XU243 LSmitll_NDRO P086 N334 clk126 reg2_0ut6 
+XU244 LSmitll_AND2 reg2_data6 P058 clk127 P086 
+XU245 LSmitll_NDRO P087 N409 clk128 reg3_0ut0 
+XU246 LSmitll_AND2 reg3_data0 P059 clk129 P087 
+XU247 LSmitll_NDRO P088 N442 clk130 reg3_0ut1 
+XU248 LSmitll_AND2 reg3_data1 P060 clk131 P088 
+XU249 LSmitll_NDRO P089 N466 clk132 reg3_0ut2 
+XU250 LSmitll_AND2 reg3_data2 P061 clk133 P089 
+XU251 LSmitll_NDRO P090 N500 clk134 reg3_0ut3 
+XU252 LSmitll_AND2 reg3_data3 P062 clk135 P090 
+XU253 LSmitll_NDRO P091 N540 clk136 reg3_0ut4 
+XU254 LSmitll_AND2 reg3_data4 P063 clk137 P091 
+XU255 LSmitll_NDRO P092 N558 clk138 reg3_0ut5 
+XU256 LSmitll_AND2 reg3_data5 P064 clk139 P092 
+XU257 LSmitll_NDRO P093 N586 clk140 reg3_0ut6 
+XU258 LSmitll_AND2 reg3_data6 P065 clk141 P093 
+XU259 LSmitll_NDRO P094 N613 clk142 reg4_0ut0 
+XU260 LSmitll_AND2 reg4_data0 P066 clk143 P094 
+XU261 LSmitll_NDRO P095 N640 clk144 reg4_0ut1 
+XU262 LSmitll_AND2 reg4_data1 P067 clk145 P095 
+XU263 LSmitll_NDRO P096 N662 clk146 reg4_0ut2 
+XU264 LSmitll_AND2 reg4_data2 P068 clk147 P096 
+XU265 LSmitll_NDRO P097 N667 clk148 reg4_0ut3 
+XU266 LSmitll_AND2 reg4_data3 P069 clk149 P097 
+XU267 LSmitll_NDRO P098 N671 clk150 reg4_0ut4 
+XU268 LSmitll_AND2 reg4_data4 P070 clk151 P098 
+XU269 LSmitll_NDRO P099 N682 clk152 reg4_0ut5 
+XU270 LSmitll_AND2 reg4_data5 P071 clk153 P099 
+XU271 LSmitll_NDRO P100 N684 clk154 reg4_0ut6 
+XU272 LSmitll_AND2 reg4_data6 P072 clk155 P100 
+XU273 LSmitll_AND2 reg1_0ut0 read_from_reg1_0 clk156 N110 
+XU274 LSmitll_AND2 read_from_reg2_0 reg2_0ut0 clk157 N132 
+XU275 LSmitll_AND2 reg3_0ut0 read_from_reg3_0 clk158 N146 
+XU276 LSmitll_AND2 read_from_reg4_0 reg4_0ut0 clk159 N167 
+XU277 LSmitll_AND2 read_from_reg1_1 reg1_0ut1 clk160 N177 
+XU278 LSmitll_AND2 reg2_0ut1 read_from_reg2_1 clk161 N185 
+XU279 LSmitll_AND2 read_from_reg3_1 reg3_0ut1 clk162 N192 
+XU280 LSmitll_AND2 reg4_0ut1 read_from_reg4_1 clk163 N204 
+XU281 LSmitll_AND2 reg1_0ut2 read_from_reg1_2 clk164 N259 
+XU282 LSmitll_AND2 read_from_reg2_2 reg2_0ut2 clk165 N275 
+XU283 LSmitll_AND2 reg3_0ut2 read_from_reg3_2 clk166 N305 
+XU284 LSmitll_AND2 read_from_reg4_2 reg4_0ut2 clk167 N320 
+XU285 LSmitll_AND2 read_from_reg1_3 reg1_0ut3 clk168 N361 
+XU286 LSmitll_AND2 reg2_0ut3 read_from_reg2_3 clk169 N377 
+XU287 LSmitll_AND2 read_from_reg3_3 reg3_0ut3 clk170 N413 
+XU288 LSmitll_AND2 reg4_0ut3 read_from_reg4_3 clk171 N422 
+XU289 LSmitll_AND2 read_from_reg1_4 reg1_0ut4 clk172 N461 
+XU290 LSmitll_AND2 reg2_0ut4 read_from_reg2_4 clk173 N480 
+XU291 LSmitll_AND2 read_from_reg3_4 reg3_0ut4 clk174 N520 
+XU292 LSmitll_AND2 read_from_reg4_4 reg4_0ut4 clk175 N535 
+XU293 LSmitll_AND2 reg1_0ut5 read_from_reg1_5 clk176 N562 
+XU294 LSmitll_AND2 read_from_reg2_5 reg2_0ut5 clk177 N581 
+XU295 LSmitll_AND2 reg3_0ut5 read_from_reg3_5 clk178 N601 
+XU296 LSmitll_AND2 read_from_reg4_5 reg4_0ut5 clk179 N607 
+XU297 LSmitll_AND2 reg1_0ut6 read_from_reg1_6 clk180 N644 
+XU298 LSmitll_AND2 read_from_reg2_6 reg2_0ut6 clk181 N660 
+XU299 LSmitll_AND2 reg3_0ut6 read_from_reg3_6 clk182 N666 
+XU300 LSmitll_AND2 read_from_reg4_6 reg4_0ut6 clk183 N670 
+XU301 LSmitll_OR2 N110 N132 clk184 N131 
+XU302 LSmitll_OR2 N146 N167 clk185 N144 
+XU303 LSmitll_OR2 N177 N185 clk186 N183 
+XU304 LSmitll_OR2 N192 N204 clk187 N189 
+XU305 LSmitll_OR2 N259 N275 clk188 N270 
+XU306 LSmitll_OR2 N305 N320 clk189 N297 
+XU307 LSmitll_OR2 N361 N377 clk190 N373 
+XU308 LSmitll_OR2 N413 N422 clk191 N406 
+XU309 LSmitll_OR2 N461 N480 clk192 N475 
+XU310 LSmitll_OR2 N520 N535 clk193 N507 
+XU311 LSmitll_OR2 N562 N581 clk194 N578 
+XU312 LSmitll_OR2 N601 N607 clk195 N597 
+XU313 LSmitll_OR2 N644 N660 clk196 N658 
+XU314 LSmitll_OR2 N666 N670 clk197 N665 
+XU315 LSmitll_OR2 N131 N144 clk198 bit_out0 
+XU316 LSmitll_OR2 N183 N189 clk199 bit_out1 
+XU317 LSmitll_OR2 N270 N297 clk200 bit_out2 
+XU318 LSmitll_OR2 N373 N406 clk201 bit_out3 
+XU319 LSmitll_OR2 N475 N507 clk202 bit_out4 
+XU320 LSmitll_OR2 N578 N597 clk203 bit_out5 
+XU321 LSmitll_OR2 N658 N665 clk204 bit_out6 
+XU322 LSmitll_SPLIT bit_out0 N004 N014 
+XU323 LSmitll_SPLIT bit_out1 N026 N032 
+XU324 LSmitll_DFF N014 clk205 N015 
+XU325 LSmitll_NOT N004 clk206 N005 
+XU326 LSmitll_DFF N032 clk207 N033 
+XU327 LSmitll_NOT N026 clk208 N027 
+XU328 LSmitll_DFF bit_out2 clk209 N135 
+XU329 LSmitll_DFF bit_out3 clk210 N198 
+XU330 LSmitll_DFF bit_out4 clk211 N342 
+XU331 LSmitll_DFF bit_out5 clk212 N491 
+XU332 LSmitll_DFF bit_out6 clk213 N620 
+XSPLIT_overflow1 LSmitll_SPLIT regFlags_out0 V_0 N687 
+XSPLIT_Zero1 LSmitll_SPLIT regFlags_out1 N694 N703 
+XSPLIT_Neg1 LSmitll_SPLIT regFlags_out2 N_0 N730 
+XU333 LSmitll_DFF N687 clk214 V_1 
+XU334 LSmitll_DFF N694 clk215 Z 
+XU335 LSmitll_NOT N703 clk216 not_Z 
+XU336 LSmitll_DFF N730 clk217 N_1 
+XU337 LSmitll_XOR V_0 N_0 clk218 N713 
+XU338 LSmitll_SPLIT N005 N003 N006 
+XU339 LSmitll_SPLIT N015 N012 N016 
+XU340 LSmitll_SPLIT N027 N008 N028 
+XU341 LSmitll_SPLIT N033 N018 N035 
+XU342 LSmitll_AND2 N006 N008 clk219 N001 
+XU343 LSmitll_AND2 N003 N018 clk220 N013 
+XU344 LSmitll_AND2 N012 N028 clk221 N024 
+XU345 LSmitll_AND2 N016 N035 clk222 N034 
+XU346 LSmitll_DFF N135 clk223 N136 
+XU347 LSmitll_DFF N198 clk224 N199 
+XU348 LSmitll_DFF N342 clk225 N343 
+XU349 LSmitll_DFF N491 clk226 N492 
+XU350 LSmitll_DFF N620 clk227 N621 
+XU351 LSmitll_DFF Z clk228 N685 
+XU352 LSmitll_DFF not_Z clk229 N720 
+XU353 LSmitll_XOR V_1 N_1 clk230 N692 
+XU354 LSmitll_NOT N713 clk231 N714 
+XU355 LSmitll_SPLIT N685 N683 N686 
+XU356 LSmitll_SPLIT N714 N709 N716 
+XU357 LSmitll_SPLIT N692 N689 N693 
+XU358 LSmitll_SPLIT N034 N038 N043 
+XU359 LSmitll_SPLIT N038 N036 N039 
+XU360 LSmitll_SPLIT N043 N041 N045 
+XU361 LSmitll_SPLIT N013 N009 N019 
+XU362 LSmitll_SPLIT N024 N022 N030 
+XU363 LSmitll_SPLIT N136 N134 N138 
+XU364 LSmitll_SPLIT N134 N111 N137 
+XU365 LSmitll_SPLIT N138 N149 N170 
+XU366 LSmitll_SPLIT N199 N193 N205 
+XU367 LSmitll_SPLIT N193 N190 N200 
+XU368 LSmitll_SPLIT N205 N248 N266 
+XU369 LSmitll_SPLIT N343 N336 N352 
+XU370 LSmitll_SPLIT N492 N487 N495 
+XU371 LSmitll_SPLIT N336 N328 N344 
+XU372 LSmitll_SPLIT N487 N471 N493 
+XU373 LSmitll_SPLIT N352 N384 N411 
+XU374 LSmitll_SPLIT N495 N531 N553 
+XU375 LSmitll_SPLIT N621 N616 N627 
+XU376 LSmitll_SPLIT N616 N603 N622 
+XU377 LSmitll_SPLIT N627 N645 N661 
+XU378 LSmitll_DFF N036 clk232 N037 
+XU379 LSmitll_DFF N039 clk233 N040 
+XU380 LSmitll_DFF N041 clk234 N042 
+XU381 LSmitll_DFF N045 clk235 N046 
+XU382 LSmitll_DFF N009 clk236 N010 
+XU383 LSmitll_DFF N019 clk237 N020 
+XU384 LSmitll_DFF N022 clk238 N023 
+XU385 LSmitll_DFF N030 clk239 N031 
+XU386 LSmitll_DFF N001 clk240 N002 
+XU387 LSmitll_NOT N111 clk241 N112 
+XU388 LSmitll_DFF N137 clk242 N140 
+XU389 LSmitll_DFF N149 clk243 bit5_1 
+XU390 LSmitll_DFF N170 clk244 bit5_2 
+XU391 LSmitll_DFF N190 clk245 N191 
+XU392 LSmitll_DFF N200 clk246 N216 
+XU393 LSmitll_DFF N248 clk247 bit4_1 
+XU394 LSmitll_DFF N266 clk248 bit4_2 
+XU395 LSmitll_DFF N328 clk249 N329 
+XU396 LSmitll_DFF N344 clk250 N362 
+XU397 LSmitll_DFF N384 clk251 bit3_1 
+XU398 LSmitll_NOT N411 clk252 bit3_1_not 
+XU399 LSmitll_DFF N471 clk253 N472 
+XU400 LSmitll_DFF N493 clk254 N508 
+XU401 LSmitll_DFF N531 clk255 bit2_1 
+XU402 LSmitll_NOT N553 clk256 bit2_1_not 
+XU403 LSmitll_DFF N603 clk257 N604 
+XU404 LSmitll_DFF N622 clk258 N633 
+XU405 LSmitll_DFF N645 clk259 bit1_1 
+XU406 LSmitll_NOT N661 clk260 bit1_1_not 
+XU407 LSmitll_DFF N683 clk261 EQ 
+XU408 LSmitll_AND2 N716 N720 clk262 GT 
+XU409 LSmitll_DFF N693 clk263 LT 
+XU410 LSmitll_DFF N709 clk264 GE 
+XU411 LSmitll_OR2 N686 N689 clk265 LE 
+XU412 LSmitll_SPLIT N023 N021 N025 
+XU413 LSmitll_SPLIT N021 Data_hndl_OP0 Data_hndl_OP1 
+XU414 LSmitll_SPLIT N025 Data_hndl_OP2 Data_hndl_OP3 
+XU415 LSmitll_SPLIT N031 N029 Data_hndl_OP6 
+XU416 LSmitll_SPLIT N029 Data_hndl_OP4 Data_hndl_OP5 
+XU417 LSmitll_SPLIT N010 N007 N011 
+XU418 LSmitll_SPLIT N007 CMP_OP0 CMP_OP1 
+XU419 LSmitll_SPLIT N011 CMP_OP2 CMP_OP3 
+XU420 LSmitll_SPLIT N020 N017 CMP_OP6 
+XU421 LSmitll_SPLIT N017 CMP_OP4 CMP_OP5 
+XU422 LSmitll_SPLIT N037 ALU_OP0 ALU_OP1 
+XU423 LSmitll_SPLIT N040 ALU_OP2 ALU_OP3 
+XU424 LSmitll_SPLIT N042 ALU_OP4 ALU_OP5 
+XU425 LSmitll_SPLIT N046 N044 ALU_OP8 
+XU426 LSmitll_SPLIT N044 ALU_OP6 ALU_OP7 
+XU427 LSmitll_SPLIT N112 N100 N130 
+XU428 LSmitll_SPLIT N140 N139 N145 
+XU429 LSmitll_SPLIT N216 N194 N224 
+XU430 LSmitll_SPLIT N362 N337 N366 
+XU431 LSmitll_SPLIT N508 N488 N518 
+XU432 LSmitll_SPLIT N633 N617 N636 
+XU433 LSmitll_DFF N002 clk266 Branch_OP 
+XU434 LSmitll_DFF CMP_OP0 clk267 N058 
+XU435 LSmitll_OR2 CMP_OP1 ALU_OP0 clk268 read 
+XU436 LSmitll_DFF ALU_OP1 clk269 N078 
+XU437 LSmitll_AND2 N100 Data_hndl_OP0 clk270 N103 
+XU438 LSmitll_AND2 ALU_OP2 N130 clk271 N113 
+XU439 LSmitll_AND2 N139 Data_hndl_OP1 clk272 N141 
+XU440 LSmitll_AND2 ALU_OP3 N145 clk273 N151 
+XU441 LSmitll_AND2 N194 ALU_OP4 clk274 N201 
+XU442 LSmitll_AND2 CMP_OP2 N224 clk275 N225 
+XU443 LSmitll_AND2 Data_hndl_OP2 N191 clk276 Imm0 
+XU444 LSmitll_AND2 N337 ALU_OP5 clk277 N345 
+XU445 LSmitll_AND2 CMP_OP3 N366 clk278 N367 
+XU446 LSmitll_AND2 Data_hndl_OP3 N329 clk279 Imm1 
+XU447 LSmitll_AND2 N488 ALU_OP6 clk280 N494 
+XU448 LSmitll_AND2 CMP_OP4 N518 clk281 N519 
+XU449 LSmitll_AND2 Data_hndl_OP4 N472 clk282 Imm2 
+XU450 LSmitll_AND2 N617 ALU_OP7 clk283 N623 
+XU451 LSmitll_AND2 CMP_OP5 N636 clk284 N637 
+XU452 LSmitll_AND2 Data_hndl_OP5 N604 clk285 Imm3 
+XU453 LSmitll_OR2 bit5_1 bit4_1 clk286 N672 
+XU454 LSmitll_DFF bit3_1 clk287 BAL 
+XU455 LSmitll_AND2 bit3_1_not EQ clk288 BEQ 
+XU456 LSmitll_AND2 bit2_1 GT clk289 BGT 
+XU457 LSmitll_AND2 bit2_1_not LT clk290 BLT 
+XU458 LSmitll_AND2 bit1_1 GE clk291 BGE 
+XU459 LSmitll_AND2 bit1_1_not LE clk292 BLE 
+XU460 LSmitll_DFF bit5_2 clk293 N733 
+XU461 LSmitll_DFF bit4_2 clk294 N743 
+XU462 LSmitll_DFF ALU_OP8 clk295 N753 
+XU463 LSmitll_DFF CMP_OP6 clk296 N757 
+XU464 LSmitll_DFF N058 clk297 N059 
+XU465 LSmitll_DFF N078 clk298 N079 
+XU466 LSmitll_DFF N113 clk299 N114 
+XU467 LSmitll_DFF N103 clk300 N104 
+XU468 LSmitll_DFF N151 clk301 N152 
+XU469 LSmitll_DFF N141 clk302 N142 
+XU470 LSmitll_OR2 N201 N225 clk303 N217 
+XU471 LSmitll_OR2 N345 N367 clk304 N363 
+XU472 LSmitll_OR2 N494 N519 clk305 N509 
+XU473 LSmitll_OR2 N623 N637 clk306 N634 
+XU474 LSmitll_AND2 N672 Branch_OP clk307 N676 
+XU475 LSmitll_OR2 BAL BEQ clk308 N690 
+XU476 LSmitll_OR2 BGT BLT clk309 N699 
+XU477 LSmitll_OR2 BGE BLE clk310 N705 
+XU478 LSmitll_DFF N733 clk311 N734 
+XU479 LSmitll_DFF N743 clk312 N744 
+XU480 LSmitll_DFF N757 clk313 N758 
+XU481 LSmitll_SPLIT N634 N624 N638 
+XU482 LSmitll_DFF N059 clk314 N060 
+XU483 LSmitll_DFF N079 clk315 N080 
+XU484 LSmitll_DFF N114 clk316 N115 
+XU485 LSmitll_DFF N104 clk317 N105 
+XU486 LSmitll_DFF N152 clk318 N153 
+XU487 LSmitll_DFF N142 clk319 N143 
+XU488 LSmitll_DFF N217 clk320 N218 
+XU489 LSmitll_DFF N363 clk321 N364 
+XU490 LSmitll_DFF N509 clk322 N510 
+XU491 LSmitll_DFF N624 clk323 N625 
+XU492 LSmitll_DFF N638 clk324 N654 
+XU493 LSmitll_DFF N676 clk325 N677 
+XU494 LSmitll_OR2 N699 N705 clk326 N695 
+XU495 LSmitll_DFF N690 clk327 N691 
+XU496 LSmitll_DFF N734 clk328 N735 
+XU497 LSmitll_DFF N744 clk329 N745 
+XU498 LSmitll_SPLIT N625 N610 N628 
+XU499 LSmitll_DFF N060 clk330 N061 
+XU500 LSmitll_DFF N080 clk331 N081 
+XU501 LSmitll_DFF N115 clk332 N116 
+XU502 LSmitll_DFF N153 clk333 N154 
+XU503 LSmitll_DFF N218 clk334 Op_Arith 
+XU504 LSmitll_DFF N364 clk335 Op_And 
+XU505 LSmitll_DFF N510 clk336 Op_Xor 
+XU506 LSmitll_DFF N610 clk337 Cmpl_b0 
+XU507 LSmitll_DFF N628 clk338 Cmpl_b1 
+XU508 LSmitll_DFF N654 clk339 Cin 
+XU509 LSmitll_DFF N677 clk340 not_NoOp 
+XU510 LSmitll_OR2 N691 N695 clk341 P101 
+XU511 LSmitll_DFF N735 clk342 N736 
+XU512 LSmitll_DFF N745 clk343 N746 
+XU513 LSmitll_SPLIT P101 N688 N696 
+XU514 LSmitll_SPLIT not_NoOp N675 N679 
+XU515 LSmitll_DFF N061 clk344 N062 
+XU516 LSmitll_DFF N081 clk345 N082 
+XU517 LSmitll_DFF N116 clk346 N117 
+XU518 LSmitll_DFF N154 clk347 N155 
+XU519 LSmitll_DFF N675 clk348 P102 
+XU520 LSmitll_AND2 N679 N688 clk349 P103 
+XU521 LSmitll_NOT N696 clk350 N697 
+XU522 LSmitll_DFF N736 clk351 N737 
+XU523 LSmitll_DFF N746 clk352 N747 
+XU524 LSmitll_DFF N758 clk353 N759 
+XU525 LSmitll_SPLIT P103 branching_and_cond_met_0 branching_and_cond_met_1 
+XU526 LSmitll_SPLIT P102 N673 N678 
+XU527 LSmitll_SPLIT branching_and_cond_met_0 N738 N740 
+XU528 LSmitll_DFF N062 clk354 N063 
+XU529 LSmitll_DFF N082 clk355 N083 
+XU530 LSmitll_DFF N117 clk356 N118 
+XU531 LSmitll_DFF N155 clk357 N156 
+XU532 LSmitll_AND2 N678 N697 clk358 branching_and_cond_not_met 
+XU533 LSmitll_DFF branching_and_cond_met_1 clk359 N668 
+XU534 LSmitll_OR2 not_current_instr_Addrr1_1 not_current_instr_Addrr0_1 clk360 N681 
+XU535 LSmitll_DFF N673 clk361 N674 
+XU536 LSmitll_AND2 N737 N738 clk362 branch_offset0 
+XU537 LSmitll_AND2 N740 N747 clk363 N742 
+XU538 LSmitll_DFF N753 clk364 N754 
+XU539 LSmitll_DFF N759 clk365 N760 
+XU540 LSmitll_DFF N063 clk366 N064 
+XU541 LSmitll_DFF N083 clk367 N084 
+XU542 LSmitll_DFF N118 clk368 N119 
+XU543 LSmitll_DFF N156 clk369 N157 
+XU544 LSmitll_DFF N760 clk370 N761 
+XU545 LSmitll_DFF N761 clk371 N762 
+XU546 LSmitll_DFF N668 clk372 N669 
+XU547 LSmitll_AND2 N674 N681 clk373 N680 
+XU548 LSmitll_OR2 branch_offset0 branching_and_cond_not_met clk374 N717 
+XU549 LSmitll_DFF N742 clk375 branch_offset1 
+XU550 LSmitll_OR2 not_current_instr_Addrr0_0 not_current_instr_Addrr1_0 clk376 not_cur_instr_Adr0_and_cur_instr_Adr1 
+XU551 LSmitll_OR2 N754 N762 clk377 N756 
+XU552 LSmitll_DFF N064 clk378 N065 
+XU553 LSmitll_DFF N084 clk379 N085 
+XU554 LSmitll_DFF N119 clk380 N120 
+XU555 LSmitll_DFF N157 clk381 N158 
+XU556 LSmitll_OR2 N756 Data_hndl_OP6 clk382 N763 
+XU557 LSmitll_SPLIT N763 increment_Adrr0_SC read_next_intsrSC 
+XU558 LSmitll_OR2 N669 N680 clk383 read_next_intsrBranch_indeed 
+XU559 LSmitll_OR2 N717 increment_Adrr0_SC clk384 adder_b0 
+XU560 LSmitll_DFF branch_offset1 clk385 adder_b1 
+XU561 LSmitll_AND2 not_cur_instr_Adr0_and_cur_instr_Adr1 read_next_intsrSC clk386 read_next_intsrSC_indeed 
+XU562 LSmitll_SPLIT adder_a0 N700 N710 
+XU563 LSmitll_SPLIT adder_b0 N706 N721 
+XU564 LSmitll_DFF N065 clk387 N066 
+XU565 LSmitll_DFF N085 clk388 N086 
+XU566 LSmitll_DFF N120 clk389 N121 
+XU567 LSmitll_DFF N158 clk390 N159 
+XU568 LSmitll_XOR N700 N706 clk391 N704 
+XU569 LSmitll_AND2 N710 N721 clk392 N722 
+XU570 LSmitll_XOR adder_a1 adder_b1 clk393 N728 
+XU571 LSmitll_OR2 read_next_intsrSC_indeed read_next_intsrBranch_indeed clk394 P104 
+XU572 LSmitll_DFF N066 clk395 N067 
+XU573 LSmitll_DFF N086 clk396 N087 
+XU574 LSmitll_DFF N121 clk397 N122 
+XU575 LSmitll_DFF N159 clk398 N160 
+XU576 LSmitll_SPLIT P104 N748 N751 
+XU577 LSmitll_XOR N722 N728 clk399 sum1 
+XU578 LSmitll_DFF N704 clk400 sum0 
+XU579 LSmitll_DFF N748 clk401 N749 
+XU580 LSmitll_DFF N751 clk402 N752 
+XU581 LSmitll_SPLIT N749 N712 N750 
+XU582 LSmitll_SPLIT N752 N724 N755 
+XU583 LSmitll_SPLIT sum0 N701 N707 
+XU584 LSmitll_SPLIT sum1 N719 N729 
+XU585 LSmitll_SPLIT N701 N731 N732 
+XU586 LSmitll_SPLIT N729 N739 N741 
+XU587 LSmitll_DFF N067 clk403 N068 
+XU588 LSmitll_DFF N087 clk404 N088 
+XU589 LSmitll_DFF N122 clk405 N123 
+XU590 LSmitll_DFF N160 clk406 N161 
+XU591 LSmitll_DFF N731 clk407 nextInstrAddr0_0 
+XU592 LSmitll_DFF N732 clk408 nextInstrAddr0_1 
+XU593 LSmitll_DFF N739 clk409 nextInstrAddr1_0 
+XU594 LSmitll_DFF N741 clk410 nextInstrAddr1_1 
+XU595 LSmitll_DFF N750 clk411 readNextInstr0 
+XU596 LSmitll_DFF N755 clk412 readNextInstr1 
+XU597 LSmitll_SPLIT N712 P105 N715 
+XU598 LSmitll_NDRO P106 N715 clk413 N711 
+XU599 LSmitll_AND2 N707 P105 clk414 P106 
+XU600 LSmitll_SPLIT N724 P107 N726 
+XU601 LSmitll_NDRO P108 N726 clk415 N723 
+XU602 LSmitll_AND2 N719 P107 clk416 P108 
+XU603 LSmitll_DFF N068 clk417 N069 
+XU604 LSmitll_DFF N088 clk418 N089 
+XU605 LSmitll_DFF N123 clk419 N124 
+XU606 LSmitll_DFF N161 clk420 N162 
+XU607 LSmitll_SPLIT N711 N698 N702 
+XU608 LSmitll_SPLIT N723 N718 N725 
+XU609 LSmitll_DFF N698 clk421 adder_a0 
+XU610 LSmitll_DFF N718 clk422 adder_a1 
+XU611 LSmitll_NOT N702 clk423 N708 
+XU612 LSmitll_NOT N725 clk424 N727 
+XU613 LSmitll_SPLIT N727 not_current_instr_Addrr1_0 not_current_instr_Addrr1_1 
+XU614 LSmitll_SPLIT N708 not_current_instr_Addrr0_0 not_current_instr_Addrr0_1 
+XU615 LSmitll_DFF N069 clk425 N070 
+XU616 LSmitll_DFF N089 clk426 P109 
+XU617 LSmitll_DFF N124 clk427 N125 
+XU618 LSmitll_DFF N162 clk428 N163 
+XU619 LSmitll_SPLIT P109 N076 N093 
+XU620 LSmitll_DFF N070 clk429 write_flags 
+XU621 LSmitll_DFF N093 clk430 select1 
+XU622 LSmitll_DFF N076 clk431 select0 
+XU623 LSmitll_DFF N125 clk432 N126 
+XU624 LSmitll_DFF N163 clk433 N164 
+XU625 LSmitll_DFF N126 clk434 N127 
+XU626 LSmitll_DFF N164 clk435 N165 
+XU627 LSmitll_DFF N127 clk436 N128 
+XU628 LSmitll_DFF N165 clk437 N166 
+XU629 LSmitll_OR2 N105 N128 clk438 Addr0 
+XU630 LSmitll_OR2 N143 N166 clk439 Addr1 
+XU631 LSmitll_DFF Imm0 clk440 N047 
+XU632 LSmitll_DFF Imm1 clk441 N075 
+XU633 LSmitll_SPLIT select1 N052 N096 
+XU634 LSmitll_SPLIT N052 N050 N056 
+XU635 LSmitll_SPLIT N096 N094 N101 
+XU636 LSmitll_DFF Imm2 clk442 N168 
+XU637 LSmitll_DFF Imm3 clk443 N202 
+XU638 LSmitll_SPLIT select0 N174 N249 
+XU639 LSmitll_SPLIT N174 N173 N180 
+XU640 LSmitll_SPLIT N249 N237 N260 
+XU641 LSmitll_SPLIT read N330 N365 
+XU642 LSmitll_SPLIT N330 N323 N333 
+XU643 LSmitll_SPLIT N365 N374 N388 
+XU644 LSmitll_SPLIT Addr0 N427 N459 
+XU645 LSmitll_SPLIT Addr1 N536 N555 
+XU646 LSmitll_SPLIT write_flags N655 N663 
+XU647 LSmitll_SPLIT Cmpl_b0 Cmpl_b1_1 Cmpl_b1_0 
+XU648 LSmitll_SPLIT Cmpl_b1 Cmpl_b0_1 Cmpl_b0_0 
+XU649 LSmitll_DFF Cin clk444 N353 
+XU650 LSmitll_DFF Op_Arith clk445 N220 
+XU651 LSmitll_DFF Op_And clk446 N271 
+XU652 LSmitll_DFF Op_Xor clk447 N315 
+XU653 LSmitll_NOT N050 clk448 N049 
+XU654 LSmitll_DFF N056 clk449 N057 
+XU655 LSmitll_NOT N094 clk450 N092 
+XU656 LSmitll_DFF N101 clk451 N102 
+XU657 LSmitll_NOT N173 clk452 N172 
+XU658 LSmitll_DFF N180 clk453 N181 
+XU659 LSmitll_NOT N237 clk454 N226 
+XU660 LSmitll_DFF N260 clk455 N261 
+XU661 LSmitll_DFF N323 clk456 N324 
+XU662 LSmitll_DFF N333 clk457 N338 
+XU663 LSmitll_DFF N374 clk458 N375 
+XU664 LSmitll_DFF N388 clk459 N400 
+XU665 LSmitll_DFF N427 clk460 N428 
+XU666 LSmitll_DFF N459 clk461 N481 
+XU667 LSmitll_DFF N536 clk462 N537 
+XU668 LSmitll_DFF N555 clk463 N571 
+XU669 LSmitll_DFF N655 clk464 N656 
+XU670 LSmitll_DFF N663 clk465 N664 
+XU671 LSmitll_SPLIT N428 N416 N440 
+XU672 LSmitll_SPLIT N416 addr0_0 addr0_1 
+XU673 LSmitll_SPLIT N440 addr0_2 addr0_3 
+XU674 LSmitll_SPLIT N481 N469 N484 
+XU675 LSmitll_SPLIT N469 addr0_4 addr0_5 
+XU676 LSmitll_SPLIT N484 addr0_6 addr0_7 
+XU677 LSmitll_SPLIT N537 N521 N543 
+XU678 LSmitll_SPLIT N521 addr1_0 addr1_1 
+XU679 LSmitll_SPLIT N543 addr1_2 addr1_3 
+XU680 LSmitll_SPLIT N571 N560 N579 
+XU681 LSmitll_SPLIT N560 addr1_4 addr1_5 
+XU682 LSmitll_SPLIT N579 addr1_6 addr1_7 
+XU683 LSmitll_SPLIT N664 write_flags4 write_flags5 
+XU684 LSmitll_SPLIT N656 N648 N659 
+XU685 LSmitll_SPLIT N648 write_flags0 write_flags1 
+XU686 LSmitll_SPLIT N659 write_flags2 write_flags3 
+XU687 LSmitll_AND2 N047 N049 clk466 N048 
+XU688 LSmitll_AND2 N057 N071 clk467 N055 
+XU689 LSmitll_AND2 N075 N092 clk468 N090 
+XU690 LSmitll_AND2 N102 N108 clk469 N099 
+XU691 LSmitll_AND2 N168 N172 clk470 N171 
+XU692 LSmitll_AND2 N181 N186 clk471 N178 
+XU693 LSmitll_AND2 N202 N226 clk472 N219 
+XU694 LSmitll_AND2 N261 N276 clk473 N258 
+XU695 LSmitll_DFF N324 clk474 N325 
+XU696 LSmitll_DFF N338 clk475 N339 
+XU697 LSmitll_DFF N375 clk476 N376 
+XU698 LSmitll_DFF N400 clk477 N401 
+XU699 LSmitll_SPLIT N325 read0 read1 
+XU700 LSmitll_SPLIT N339 read2 read3 
+XU701 LSmitll_SPLIT N376 read4 read5 
+XU702 LSmitll_SPLIT N401 read6 read7 
+XU703 LSmitll_OR2 N048 N055 clk478 N053 
+XU704 LSmitll_OR2 N090 N099 clk479 N097 
+XU705 LSmitll_OR2 N171 N178 clk480 N175 
+XU706 LSmitll_OR2 N219 N258 clk481 N251 
+XU707 LSmitll_DFF N097 clk482 N098 
+XU708 LSmitll_DFF N053 clk483 N054 
+XU709 LSmitll_DFF N251 clk484 N252 
+XU710 LSmitll_DFF N175 clk485 N176 
+XU711 LSmitll_SPLIT N098 data_in2_0 data_in2_1 
+XU712 LSmitll_SPLIT N054 data_in3_0 data_in3_1 
+XU713 LSmitll_SPLIT N252 data_in0_0 data_in0_1 
+XU714 LSmitll_SPLIT N176 data_in1_0 data_in1_1 
+XU715 LSmitll_NDRO N074 addr0_1 clk486 P110 
+XU716 LSmitll_AND2 data_in0_0 addr0_0 clk487 N074 
+XU717 LSmitll_SPLIT P110 N077 N091 
+XU718 LSmitll_NDRO N107 addr0_3 clk488 P111 
+XU719 LSmitll_AND2 data_in1_0 addr0_2 clk489 N107 
+XU720 LSmitll_SPLIT P111 N109 N129 
+XU721 LSmitll_NDRO N147 addr0_5 clk490 P112 
+XU722 LSmitll_AND2 data_in2_0 addr0_4 clk491 N147 
+XU723 LSmitll_SPLIT P112 N150 N169 
+XU724 LSmitll_NDRO N182 addr0_7 clk492 P113 
+XU725 LSmitll_AND2 data_in3_0 addr0_6 clk493 N182 
+XU726 LSmitll_SPLIT P113 N184 N187 
+XU727 LSmitll_NDRO N253 addr1_1 clk494 P114 
+XU728 LSmitll_AND2 data_in0_1 addr1_0 clk495 N253 
+XU729 LSmitll_SPLIT P114 N262 N267 
+XU730 LSmitll_NDRO N311 addr1_3 clk496 P115 
+XU731 LSmitll_AND2 data_in1_1 addr1_2 clk497 N311 
+XU732 LSmitll_SPLIT P115 N318 N326 
+XU733 LSmitll_NDRO N368 addr1_5 clk498 P116 
+XU734 LSmitll_AND2 data_in2_1 addr1_4 clk499 N368 
+XU735 LSmitll_SPLIT P116 N378 N385 
+XU736 LSmitll_NDRO N429 addr1_7 clk500 P117 
+XU737 LSmitll_AND2 data_in3_1 addr1_6 clk501 N429 
+XU738 LSmitll_SPLIT P117 N443 N447 
+XU739 LSmitll_NDRO N532 write_flags1 clk502 P118 
+XU740 LSmitll_AND2 flags0_ write_flags0 clk503 N532 
+XU741 LSmitll_SPLIT P118 N524 N552 
+XU742 LSmitll_NDRO N572 write_flags3 clk504 P119 
+XU743 LSmitll_AND2 flags1_ write_flags2 clk505 N572 
+XU744 LSmitll_SPLIT P119 N566 N585 
+XU745 LSmitll_NDRO N608 write_flags5 clk506 P120 
+XU746 LSmitll_AND2 flags2_ write_flags4 clk507 N608 
+XU747 LSmitll_SPLIT P120 N605 N618 
+XU748 LSmitll_AND2 N091 read0 clk508 reg1_out0 
+XU749 LSmitll_DFF N077 clk509 reg1_out0_pad 
+XU750 LSmitll_AND2 N129 read1 clk510 reg1_out1 
+XU751 LSmitll_DFF N109 clk511 reg1_out1_pad 
+XU752 LSmitll_AND2 N169 read2 clk512 reg1_out2 
+XU753 LSmitll_DFF N150 clk513 reg1_out2_pad 
+XU754 LSmitll_AND2 N187 read3 clk514 reg1_out3 
+XU755 LSmitll_DFF N184 clk515 reg1_out3_pad 
+XU756 LSmitll_AND2 N267 read4 clk516 reg2_out0 
+XU757 LSmitll_DFF N262 clk517 reg2_out0_pad 
+XU758 LSmitll_AND2 N326 read5 clk518 reg2_out1 
+XU759 LSmitll_DFF N318 clk519 reg2_out1_pad 
+XU760 LSmitll_AND2 N385 read6 clk520 reg2_out2 
+XU761 LSmitll_DFF N378 clk521 reg2_out2_pad 
+XU762 LSmitll_AND2 N447 read7 clk522 reg2_out3 
+XU763 LSmitll_DFF N443 clk523 reg2_out3_pad 
+XU764 LSmitll_DFF N552 clk524 regFlags_out0 
+XU765 LSmitll_DFF N524 clk525 regFlags_out0_pad 
+XU766 LSmitll_DFF N585 clk526 regFlags_out1_pad 
+XU767 LSmitll_DFF N566 clk527 regFlags_out1 
+XU768 LSmitll_DFF N618 clk528 regFlags_out2 
+XU769 LSmitll_DFF N605 clk529 regFlags_out2_pad 
+XU770 LSmitll_DFF reg1_out0 clk530 P121 
+XU771 LSmitll_XOR reg2_out0 Cmpl_b1_1 clk531 P122 
+XU772 LSmitll_DFF reg1_out1 clk532 P123 
+XU773 LSmitll_XOR reg2_out1 Cmpl_b1_0 clk533 P124 
+XU774 LSmitll_DFF reg1_out2 clk534 P125 
+XU775 LSmitll_XOR reg2_out2 Cmpl_b0_1 clk535 P126 
+XU776 LSmitll_DFF reg1_out3 clk536 P127 
+XU777 LSmitll_XOR reg2_out3 Cmpl_b0_0 clk537 P128 
+XU778 LSmitll_SPLIT P122 N408 N441 
+XU779 LSmitll_SPLIT P121 N396 N407 
+XU780 LSmitll_SPLIT P124 N490 N525 
+XU781 LSmitll_SPLIT P123 N482 N489 
+XU782 LSmitll_SPLIT P126 N564 N592 
+XU783 LSmitll_SPLIT P125 N559 N563 
+XU784 LSmitll_SPLIT P128 N630 N649 
+XU785 LSmitll_SPLIT P127 N619 N629 
+XU786 LSmitll_AND2 N396 N408 clk538 N402 
+XU787 LSmitll_XOR N407 N441 clk539 p0 
+XU788 LSmitll_AND2 N482 N490 clk540 N485 
+XU789 LSmitll_XOR N489 N525 clk541 p1 
+XU790 LSmitll_AND2 N559 N564 clk542 N561 
+XU791 LSmitll_XOR N563 N592 clk543 p2 
+XU792 LSmitll_AND2 N619 N630 clk544 N626 
+XU793 LSmitll_XOR N629 N649 clk545 p3 
+XU794 LSmitll_DFF N220 clk546 N221 
+XU795 LSmitll_DFF N271 clk547 N272 
+XU796 LSmitll_DFF N315 clk548 N316 
+XU797 LSmitll_DFF N353 clk549 N354 
+XU798 LSmitll_SPLIT N221 N214 N241 
+XU799 LSmitll_SPLIT N214 Op_Arith_0 Op_Arith_1 
+XU800 LSmitll_SPLIT N241 Op_Arith_2 Op_Arith_3 
+XU801 LSmitll_SPLIT N272 N268 N285 
+XU802 LSmitll_SPLIT N268 Op_And_0 Op_And_1 
+XU803 LSmitll_SPLIT N285 Op_And_2 Op_And_3 
+XU804 LSmitll_SPLIT N316 N312 N327 
+XU805 LSmitll_SPLIT N312 Op_Xor_0 Op_Xor_1 
+XU806 LSmitll_SPLIT N327 Op_Xor_2 Op_Xor_3 
+XU807 LSmitll_SPLIT N402 g0_0 g0_1 
+XU808 LSmitll_SPLIT N485 g1_0 g1_1 
+XU809 LSmitll_SPLIT N561 g2_0 g2_1 
+XU810 LSmitll_SPLIT N626 g3_0 g3_1 
+XU811 LSmitll_DFF N354 clk550 N355 
+XU812 LSmitll_AND2 Op_Arith_0 g0_0 clk551 N389 
+XU813 LSmitll_AND2 Op_And_0 g0_1 clk552 N414 
+XU814 LSmitll_AND2 Op_Xor_0 p0 clk553 N430 
+XU815 LSmitll_AND2 Op_Arith_1 g1_0 clk554 N476 
+XU816 LSmitll_AND2 Op_And_1 g1_1 clk555 P129 
+XU817 LSmitll_AND2 Op_Xor_1 p1 clk556 P130 
+XU818 LSmitll_AND2 Op_Arith_2 g2_0 clk557 N556 
+XU819 LSmitll_AND2 Op_And_2 g2_1 clk558 P131 
+XU820 LSmitll_AND2 Op_Xor_2 p2 clk559 P132 
+XU821 LSmitll_AND2 Op_Arith_3 g3_0 clk560 N614 
+XU822 LSmitll_AND2 Op_And_3 g3_1 clk561 N639 
+XU823 LSmitll_AND2 Op_Xor_3 p3 clk562 N646 
+XU824 LSmitll_SPLIT P129 N496 N511 
+XU825 LSmitll_SPLIT P130 N512 N538 
+XU826 LSmitll_SPLIT P131 N573 N582 
+XU827 LSmitll_SPLIT P132 N583 N598 
+XU828 LSmitll_DFF N355 clk563 N356 
+XU829 LSmitll_DFF N389 clk564 N390 
+XU830 LSmitll_OR2 N414 N430 clk565 N423 
+XU831 LSmitll_DFF N476 clk566 N477 
+XU832 LSmitll_OR2 N496 N512 clk567 N502 
+XU833 LSmitll_DFF N556 clk568 N557 
+XU834 LSmitll_OR2 N573 N583 clk569 N580 
+XU835 LSmitll_DFF N614 clk570 g3_arr_0 
+XU836 LSmitll_OR2 N639 N646 clk571 N643 
+XU837 LSmitll_OR2 N511 N538 clk572 N533 
+XU838 LSmitll_OR2 N582 N598 clk573 N594 
+XU839 LSmitll_SPLIT N390 g0_arr_0 g0_arr_1 
+XU840 LSmitll_SPLIT N423 N418 N431 
+XU841 LSmitll_SPLIT N418 n0_0 n0_1 
+XU842 LSmitll_SPLIT N431 n0_2 n0_3 
+XU843 LSmitll_SPLIT N477 g1_arr_0 g1_arr_1 
+XU844 LSmitll_SPLIT N502 n1_0 n1_1 
+XU845 LSmitll_SPLIT N533 N526 n1_4 
+XU846 LSmitll_SPLIT N526 n1_2 n1_3 
+XU847 LSmitll_SPLIT N557 g2_arr_0 g2_arr_1 
+XU848 LSmitll_SPLIT N580 n2_0 n2_1 
+XU849 LSmitll_SPLIT N594 N593 n2_4 
+XU850 LSmitll_SPLIT N593 n2_2 n2_3 
+XU851 LSmitll_SPLIT N643 N641 N647 
+XU852 LSmitll_SPLIT N641 n3_0 n3_1 
+XU853 LSmitll_SPLIT N647 n3_2 n3_3 
+XU854 LSmitll_SPLIT N356 Cin_0 Cin_1 
+XU855 LSmitll_DFF g0_arr_0 clk574 N290 
+XU856 LSmitll_DFF n0_1 clk575 N277 
+XU857 LSmitll_AND2 Cin_1 n0_0 clk576 N313 
+XU858 LSmitll_DFF g1_arr_0 clk577 N379 
+XU859 LSmitll_DFF n1_0 clk578 N357 
+XU860 LSmitll_AND2 g0_arr_1 n1_1 clk579 N397 
+XU861 LSmitll_AND2 n0_2 n1_2 clk580 N424 
+XU862 LSmitll_DFF g2_arr_0 clk581 N486 
+XU863 LSmitll_DFF n2_0 clk582 N462 
+XU864 LSmitll_AND2 g1_arr_1 n2_1 clk583 N503 
+XU865 LSmitll_AND2 n1_3 n2_2 clk584 N544 
+XU866 LSmitll_DFF g3_arr_0 clk585 N587 
+XU867 LSmitll_DFF n3_0 clk586 N567 
+XU868 LSmitll_AND2 g2_arr_1 n3_1 clk587 N599 
+XU869 LSmitll_AND2 n2_3 n3_2 clk588 N611 
+XU870 LSmitll_AND2 n0_3 n1_4 clk589 N642 
+XU871 LSmitll_AND2 n2_4 n3_3 clk590 N657 
+XU872 LSmitll_DFF Cin_0 clk591 N242 
+XU873 LSmitll_DFF N277 clk592 N278 
+XU874 LSmitll_OR2 N290 N313 clk593 N306 
+XU875 LSmitll_DFF N357 clk594 N358 
+XU876 LSmitll_OR2 N379 N397 clk595 N391 
+XU877 LSmitll_DFF N424 clk596 N425 
+XU878 LSmitll_DFF N462 clk597 N463 
+XU879 LSmitll_OR2 N486 N503 clk598 N497 
+XU880 LSmitll_DFF N544 clk599 N545 
+XU881 LSmitll_DFF N567 clk600 N568 
+XU882 LSmitll_OR2 N587 N599 clk601 N595 
+XU883 LSmitll_DFF N611 clk602 N612 
+XU884 LSmitll_AND2 N642 N657 clk603 N650 
+XU885 LSmitll_DFF N242 clk604 N243 
+XU886 LSmitll_SPLIT N243 N238 N245 
+XU887 LSmitll_SPLIT N306 N300 N314 
+XU888 LSmitll_SPLIT N391 N386 N398 
+XU889 LSmitll_SPLIT N425 N419 N432 
+XU890 LSmitll_SPLIT N612 N609 N615 
+XU891 LSmitll_DFF N238 clk605 N239 
+XU892 LSmitll_DFF N278 clk606 N279 
+XU893 LSmitll_DFF N300 clk607 N301 
+XU894 LSmitll_DFF N358 clk608 N359 
+XU895 LSmitll_DFF N386 clk609 N387 
+XU896 LSmitll_AND2 N245 N419 clk610 N417 
+XU897 LSmitll_DFF N463 clk611 N464 
+XU898 LSmitll_DFF N497 clk612 N498 
+XU899 LSmitll_AND2 N314 N545 clk613 N539 
+XU900 LSmitll_DFF N568 clk614 N569 
+XU901 LSmitll_DFF N595 clk615 N596 
+XU902 LSmitll_AND2 N398 N609 clk616 N606 
+XU903 LSmitll_AND2 N432 N615 clk617 N635 
+XU904 LSmitll_DFF N650 clk618 N651 
+XU905 LSmitll_SPLIT N239 N227 N244 
+XU906 LSmitll_DFF N227 clk619 N228 
+XU907 LSmitll_DFF N279 clk620 N280 
+XU908 LSmitll_DFF N301 clk621 N302 
+XU909 LSmitll_DFF N359 clk622 N360 
+XU910 LSmitll_OR2 N387 N417 clk623 N392 
+XU911 LSmitll_DFF N464 clk624 N465 
+XU912 LSmitll_OR2 N498 N539 clk625 N504 
+XU913 LSmitll_DFF N569 clk626 N570 
+XU914 LSmitll_OR2 N596 N606 clk627 N600 
+XU915 LSmitll_AND2 N244 N635 clk628 N632 
+XU916 LSmitll_DFF N651 clk629 N652 
+XU917 LSmitll_SPLIT N504 N499 N513 
+XU918 LSmitll_XOR N228 N280 clk630 N273 
+XU919 LSmitll_XOR N302 N360 clk631 N346 
+XU920 LSmitll_XOR N392 N465 clk632 N460 
+XU921 LSmitll_XOR N499 N570 clk633 N565 
+XU922 LSmitll_OR2 N600 N632 clk634 N631 
+XU923 LSmitll_DFF N513 clk635 N602 
+XU924 LSmitll_DFF N652 clk636 N653 
+XU925 LSmitll_SPLIT N565 N554 N584 
+XU926 LSmitll_XOR N602 N631 clk637 Ov 
+XU927 LSmitll_DFF N584 clk638 Neg 
+XU928 LSmitll_DFF N554 clk639 ALU_out3 
+XU929 LSmitll_DFF N460 clk640 ALU_out2 
+XU930 LSmitll_DFF N346 clk641 ALU_out1 
+XU931 LSmitll_DFF N273 clk642 ALU_out0 
+XU932 LSmitll_DFF N653 clk643 Eq 
+XU933 LSmitll_DFF ALU_out3 clk644 N071 
+XU934 LSmitll_DFF ALU_out2 clk645 N108 
+XU935 LSmitll_DFF ALU_out1 clk646 N186 
+XU936 LSmitll_DFF ALU_out0 clk647 N276 
+XU937 LSmitll_DFF Ov clk648 flags0_ 
+XU938 LSmitll_DFF Eq clk649 flags1_ 
+XU939 LSmitll_DFF Neg clk650 flags2_ 
+.ends CPU 
+
+* @ insert between here
+*clock
+XSOURCEINGCLK SOURCECELL dcGCLK dcGCLK_x
+XLOADINGCLK LOADINCELL dcGCLK_x clk
+
+*outputs
+XSOURCEINprogram_line1 SOURCECELL dcprogram_line1 dcprogram_line1_x
+XLOADINprogram_line1 LOADINCELL dcprogram_line1_x program_line1
+
+XSOURCEINload1 SOURCECELL dcload1 dcload1_x
+XLOADINload1 LOADINCELL dcload1_x load1
+
+XSOURCEINprogram_line2 SOURCECELL dcprogram_line2 dcprogram_line2_x
+XLOADINprogram_line2 LOADINCELL dcprogram_line2_x program_line2
+
+XSOURCEINload2 SOURCECELL dcload2 dcload2_x
+XLOADINload2 LOADINCELL dcload2_x load2
+
+XSOURCEINprogram_line3 SOURCECELL dcprogram_line3 dcprogram_line3_x
+XLOADINprogram_line3 LOADINCELL dcprogram_line3_x program_line3
+
+XSOURCEINload3 SOURCECELL dcload3 dcload3_x
+XLOADINload3 LOADINCELL dcload3_x load3
+
+XSOURCEINprogram_line4 SOURCECELL dcprogram_line4 dcprogram_line4_x
+XLOADINprogram_line4 LOADINCELL dcprogram_line4_x program_line4
+
+XSOURCEINload4 SOURCECELL dcload4 dcload4_x
+XLOADINload4 LOADINCELL dcload4_x load4
+
+XSOURCEINread_at_first_addr1 SOURCECELL dcread_at_first_addr1 dcread_at_first_addr1_x
+XLOADINread_at_first_addr1 LOADINCELL dcread_at_first_addr1_x read_at_first_addr1
+
+XSOURCEINread_at_first_addr0 SOURCECELL dcread_at_first_addr0 dcread_at_first_addr0_x
+XLOADINread_at_first_addr0 LOADINCELL dcread_at_first_addr0_x read_at_first_addr0
+
+
+*outputs
+XLOADOUTreg1_out0_pad LOADOUTCELL reg1_out0_pad reg1_out0_pad_x
+XSINKOUTreg1_out0_pad SINKCELL reg1_out0_pad_x
+
+XLOADOUTreg1_out1_pad LOADOUTCELL reg1_out1_pad reg1_out1_pad_x
+XSINKOUTreg1_out1_pad SINKCELL reg1_out1_pad_x
+
+XLOADOUTreg1_out2_pad LOADOUTCELL reg1_out2_pad reg1_out2_pad_x
+XSINKOUTreg1_out2_pad SINKCELL reg1_out2_pad_x
+
+XLOADOUTreg1_out3_pad LOADOUTCELL reg1_out3_pad reg1_out3_pad_x
+XSINKOUTreg1_out3_pad SINKCELL reg1_out3_pad_x
+
+XLOADOUTreg2_out0_pad LOADOUTCELL reg2_out0_pad reg2_out0_pad_x
+XSINKOUTreg2_out0_pad SINKCELL reg2_out0_pad_x
+
+XLOADOUTreg2_out1_pad LOADOUTCELL reg2_out1_pad reg2_out1_pad_x
+XSINKOUTreg2_out1_pad SINKCELL reg2_out1_pad_x
+
+XLOADOUTreg2_out2_pad LOADOUTCELL reg2_out2_pad reg2_out2_pad_x
+XSINKOUTreg2_out2_pad SINKCELL reg2_out2_pad_x
+
+XLOADOUTreg2_out3_pad LOADOUTCELL reg2_out3_pad reg2_out3_pad_x
+XSINKOUTreg2_out3_pad SINKCELL reg2_out3_pad_x
+
+XLOADOUTregFlags_out0_pad LOADOUTCELL regFlags_out0_pad regFlags_out0_pad_x
+XSINKOUTregFlags_out0_pad SINKCELL regFlags_out0_pad_x
+
+XLOADOUTregFlags_out1_pad LOADOUTCELL regFlags_out1_pad regFlags_out1_pad_x
+XSINKOUTregFlags_out1_pad SINKCELL regFlags_out1_pad_x
+
+XLOADOUTregFlags_out2_pad LOADOUTCELL regFlags_out2_pad regFlags_out2_pad_x
+XSINKOUTregFlags_out2_pad SINKCELL regFlags_out2_pad_x
+
+* @ and here
+
+IdcGCLK 0 dcGCLK pulse(0u 690u 2.5p 3p 3p 12.5p 25p)
+Idcprogram_line1 0 dcprogram_line1 pwl(0 0 40.5p 0u 43.5p 690u 46.5p 0u 115.5p 0u 118.5p 690u 121.5p 0u 140.5p 0u 143.5p 690u 146.5p 0u 165.5p 0u 168.5p 690u 171.5p 0u 865.5p 0u 868.5p 690u 871.5p 0u 915.5p 0u 918.5p 690u 921.5p 0u 940.5p 0u 943.5p 690u 946.5p 0u 1015.5p 0u 1018.5p 690u 1021.5p 0u)
+Idcload1 0 dcload1 pwl(0 0 40.5p 0u 43.5p 690u 46.5p 0u 865.5p 0u 868.5p 690u 871.5p 0u)
+Idcprogram_line2 0 dcprogram_line2 pwl(0 0 65.5p 0u 68.5p 690u 71.5p 0u 115.5p 0u 118.5p 690u 121.5p 0u 165.5p 0u 168.5p 690u 171.5p 0u 190.5p 0u 193.5p 690u 196.5p 0u 1390.5p 0u 1393.5p 690u 1396.5p 0u 1440.5p 0u 1443.5p 690u 1446.5p 0u 1490.5p 0u 1493.5p 690u 1496.5p 0u 1515.5p 0u 1518.5p 690u 1521.5p 0u)
+Idcload2 0 dcload2 pwl(0 0 40.5p 0u 43.5p 690u 46.5p 0u 1365.5p 0u 1368.5p 690u 1371.5p 0u)
+Idcprogram_line3 0 dcprogram_line3 pwl(0 0 115.5p 0u 118.5p 690u 121.5p 0u 1940.5p 0u 1943.5p 690u 1946.5p 0u)
+Idcload3 0 dcload3 pwl(0 0 40.5p 0u 43.5p 690u 46.5p 0u 1865.5p 0u 1868.5p 690u 1871.5p 0u)
+Idcprogram_line4 0 dcprogram_line4 pwl(0 0 40.5p 0u 43.5p 690u 46.5p 0u 90.5p 0u 93.5p 690u 96.5p 0u 140.5p 0u 143.5p 690u 146.5p 0u 190.5p 0u 193.5p 690u 196.5p 0u 2365.5p 0u 2368.5p 690u 2371.5p 0u 2415.5p 0u 2418.5p 690u 2421.5p 0u 2465.5p 0u 2468.5p 690u 2471.5p 0u 2490.5p 0u 2493.5p 690u 2496.5p 0u)
+Idcload4 0 dcload4 pwl(0 0 40.5p 0u 43.5p 690u 46.5p 0u 2365.5p 0u 2368.5p 690u 2371.5p 0u)
+Idcread_at_first_addr0 0 dcread_at_first_addr0 pwl(0 0 315.5p 0u 318.5p 690u 321.5p 0u)
+Idcread_at_first_addr1 0 dcread_at_first_addr1 pwl(0 0 315.5p 0u 318.5p 690u 321.5p 0u)
+
+XDUT CPU program_line1 load1 program_line2 load2 program_line3 load3 program_line4 load4 read_at_first_addr1 read_at_first_addr0 clk reg1_out0_pad reg1_out1_pad reg1_out2_pad reg1_out3_pad reg2_out0_pad reg2_out1_pad reg2_out2_pad reg2_out3_pad regFlags_out0_pad regFlags_out1_pad regFlags_out2_pad
+
+*.tran 0.1p 2600p 0 Program1
+*.tran 0.1p 2000p 0
+
+.tran 0.1p 4500p 0 
+
+*.file ./inputs.csv
+*.print i(L5.XU17.XDUT) i(L1.XU2.XDUT) i(L1.XU1.XDUT) i(L1.XU4.XDUT) i(L1.XU3.XDUT) i(L1.XU6.XDUT) i(L1.XU5.XDUT) i(L1.XU8.XDUT) i(L1.XU7.XDUT)
+
+*.file ./instr_reg1.csv
+*.print v(clk0.XDUT) v(reg1_0ut0.XDUT) v(reg1_0ut1.XDUT) v(reg1_0ut2.XDUT) v(reg1_0ut3.XDUT) v(reg1_0ut4.XDUT) v(reg1_0ut5.XDUT) v(reg1_0ut6.XDUT)
+
+*.file ./instr_reg2.csv
+*.print v(clk1.XDUT) v(reg2_0ut0.XDUT) v(reg2_0ut1.XDUT) v(reg2_0ut2.XDUT) v(reg2_0ut3.XDUT) v(reg2_0ut4.XDUT) v(reg2_0ut5.XDUT) v(reg2_0ut6.XDUT)
+
+*.file ./instr_reg3.csv
+*.print v(clk2.XDUT) v(reg3_0ut0.XDUT) v(reg3_0ut1.XDUT) v(reg3_0ut2.XDUT) v(reg3_0ut3.XDUT) v(reg3_0ut4.XDUT) v(reg3_0ut5.XDUT) v(reg3_0ut6.XDUT)
+
+*.file ./instr_reg4.csv
+*.print v(clk3.XDUT) v(reg4_0ut0.XDUT) v(reg4_0ut1.XDUT) v(reg4_0ut2.XDUT) v(reg4_0ut3.XDUT) v(reg4_0ut4.XDUT) v(reg4_0ut5.XDUT) v(reg4_0ut6.XDUT)
+
+*.file ./branches.csv
+*.print i(L1.XSPLIT0.XSPLIT_16.XSPLIT_32.XSPLIT_64.XSPLIT_128.XSPLIT_256.XSPLIT_512.XSPLITCLK.XDUT) 
+*.print  v(BAL.XDUT) v(EQ.XDUT) v(BEQ.XDUT) v(LT.XDUT) v(BLT.XDUT) v(LE.XDUT) v(BLE.XDUT) v(GT.XDUT) v(BGT.XDUT) v(GE.XDUT) v(BGE.XDUT)
+*.print v(branching_and_cond_met_0.XDUT) v(branching_and_cond_not_met.XDUT) 
+
+* OUTPUTS
+* Reg1_out0 Reg1_out1 Reg1_out2 Reg1_out3
+.file ./Reg1_rosetta1_4b.csv  
+.print i(L1.XSPLIT0.XSPLIT_16.XSPLIT_32.XSPLIT_64.XSPLIT_128.XSPLIT_256.XSPLIT_512.XSPLITCLK.XDUT)
+.print i(L7.XU749.XDUT) i(L7.XU751.XDUT) i(L7.XU753.XDUT) i(L7.XU755.XDUT) 
+
+* Reg2_out0 Reg2_out1 Reg2_out2 Reg2_out3
+.file ./Reg2_rosetta1_4b.csv
+.print i(L1.XSPLIT0.XSPLIT_16.XSPLIT_32.XSPLIT_64.XSPLIT_128.XSPLIT_256.XSPLIT_512.XSPLITCLK.XDUT) 
+.print i(L7.XU757.XDUT) i(L7.XU759.XDUT) i(L7.XU761.XDUT) i(L7.XU763.XDUT)
+
+* flags_Reg_out_0 flags_Reg_out_1 flags_Reg_out_2
+.file ./Reg_flags_rosetta1_4b.csv
+.print i(L1.XSPLIT0.XSPLIT_16.XSPLIT_32.XSPLIT_64.XSPLIT_128.XSPLIT_256.XSPLIT_512.XSPLITCLK.XDUT)
+*.print i(L7.XU620.XDUT)
+.print i(L7.XU765.XDUT) i(L7.XU767.XDUT) i(L7.XU769.XDUT)

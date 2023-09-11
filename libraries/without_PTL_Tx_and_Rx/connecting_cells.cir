@@ -1,0 +1,117 @@
+* =========================== Connecting cells =================================================================
+* === SOURCE DEFINITION ===
+.SUBCKT SOURCECELL  8 11
+b1   1  2  jjmitll100 area=2.25
+b2   3  4  jjmitll100 area=2.25
+b3   5  6  jjmitll100 area=2.5
+ib1  0  2  pwl(0 0 5p 275ua)
+ib2  0  5  pwl(0 0 5p 175ua)
+l1   8  7  1p
+l2   7  0  3.9p
+l3   7  1  0.6p
+l4   2  3  1.1p
+l5   3  5  4.5p
+l6   5  11 2p
+lp2  4  0  0.2p
+lp3  6  0  0.2p
+lrb1 9  2  1p
+lrb2 10 4  1p
+lrb3 12 6  1p
+rb1  1  9  4.31
+rb2  3  10 4.31
+rb3  5  12 3.88
+.model jjmitll100 jj(rtype=1, vg=2.8mv, cap=0.07pf, r0=160, rn=16, icrit=0.1ma)
+.ENDS SOURCECELL
+
+* === INPUT LOAD DEFINITION ===
+.SUBCKT LOADINCELL  a q
+.model jjmit jj(rtype=1, vg=2.8mv, cap=0.07pf, r0=160, rn=16, icrit=0.1ma)
+.param phi0=2.067833848e-15
+.param b0=1
+.param ic0=0.0001
+.param icrs=100u*6.859904418
+.param b0rs=icrs/ic0*b0
+.param rsheet=2
+.param lsheet=1.13e-12
+.param lp=0.2p
+.param ic=2.5
+.param icreceive=2.5
+.param ictrans=2.5
+.param lptl=2p
+.param lb=2p
+.param biascoef=0.7
+.param b1=ic
+.param b2=ic
+.param rb1=b0rs/b1
+.param rb2=b0rs/b2
+.param lrb1=(rb1/rsheet)*lsheet
+.param lrb2=(rb2/rsheet)*lsheet
+.param l1=lptl
+.param l2=phi0/(4*b1*ic0)
+.param l3=phi0/(4*b1*ic0)
+.param l4=lptl
+.param ib1=biascoef*ic0*(b1+b2)
+b1  3 7 jjmit  area=b1
+b2 4 9 jjmit  area=b2
+ib1 0 5 pwl(0 0 5p ib1)
+l1 a 3 l1
+l2 3 6 l2
+l3 6 4 l3
+l4 4 q l4
+lb1 5 6 lb
+lp1 7 0 lp
+lp2 9 0 lp
+lrb1 3 8 lrb1
+lrb2 4 10 lrb2
+rb1 8 0 rb1
+rb2 10 0 rb2
+.ENDS LOADINCELL
+
+* === OUTPUT LOAD DEFINITION ===
+.SUBCKT LOADOUTCELL  a q
+.model jjmit jj(rtype=1, vg=2.8mv, cap=0.07pf, r0=160, rn=16, icrit=0.1ma)
+.param phi0=2.067833848e-15
+.param b0=1
+.param ic0=0.0001
+.param icrs=100u*6.859904418
+.param b0rs=icrs/ic0*b0
+.param rsheet=2
+.param lsheet=1.13e-12
+.param lp=0.2p
+.param ic=2.5
+.param icreceive=2.5
+.param ictrans=2.5
+.param lptl=2p
+.param lb=2p
+.param biascoef=0.7
+.param b1=ic
+.param b2=ic
+.param rb1=b0rs/b1
+.param rb2=b0rs/b2
+.param lrb1=(rb1/rsheet)*lsheet
+.param lrb2=(rb2/rsheet)*lsheet
+.param l1=lptl
+.param l2=phi0/(4*b1*ic0)
+.param l3=phi0/(4*b1*ic0)
+.param l4=lptl
+.param ib1=biascoef*ic0*(b1+b2)
+b1  3 7 jjmit  area=b1
+b2 4 9 jjmit  area=b2
+ib1 0 5 pwl(0 0 5p ib1)
+l1 a 3 l1
+l2 3 6 l2
+l3 6 4 l3
+l4 4 q l4
+lb1 5 6 lb
+lp1 7 0 lp
+lp2 9 0 lp
+lrb1 3 8 lrb1
+lrb2 4 10 lrb2
+rb1 8 0 rb1
+rb2 10 0 rb2
+.ENDS LOADOUTCELL
+
+* === SINK DEFINITION ===
+.SUBCKT SINKCELL  1
+r1 1 0 2
+.ENDS SINKCELL
